@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <section class="py-5" id="contact">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Tham Gia Cùng Chúng Tôi</h2>
+            <div class="row">
+                <!-- * -->
+                <form action="https://formsubmit.co/baomq.24ite@vku.udn.vn" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5500/html/thankiu.html">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Họ Tên</label>
+                            <input type="text" class="form-control" id="name" name="Họ Tên" placeholder="Nhập họ tên của bạn" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="Email" placeholder="Nhập email của bạn" required>
+                        </div>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Số Điện Thoại</label>
+                        <input type="text" class="form-control" id="phone" name="Số Điện Thoại" placeholder="Nhập số điện thoại của bạn" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="interest" class="form-label">Bạn Quan Tâm Đến</label>
+                        <select class="form-select" id="interest" name="Quan Tâm">
+                            <option selected>Chọn lĩnh vực bạn quan tâm</option>
+                            <option value="Tình nguyện viên">Tình nguyện viên</option>
+                            <option value="Quyên góp">Quyên góp</option>
+                            <option value="Hợp tác dự án">Hợp tác dự án</option>
+                            <option value="Tham quan học tập">Tham quan học tập</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Lời Nhắn</label>
+                        <textarea class="form-control" id="message" name="Lời Nhắn" rows="4" placeholder="Nhập lời nhắn của bạn"></textarea>
+                    </div>
+                
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="newsletter" name="Đăng ký bản tin">
+                        <label class="form-check-label" for="newsletter">
+                            Đăng ký nhận bản tin và thông báo về các sự kiện bảo tồn
+                        </label>
+                    </div>
+                
+                    <button type="submit" class="btn btn-primary">Gửi Thông Tin</button>
+                </form>                
+            </div>
+        </div>
+    </section>
+</body>
+</html>
