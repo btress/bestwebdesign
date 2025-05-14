@@ -12,9 +12,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 115px;
+            height: 100px;
             z-index: 10;
-            background-color: #000;
             overflow: hidden;
         }
 
@@ -74,13 +73,10 @@
             margin: 0 18px;
         }
 
-        nav a.active,
         nav a:hover {
             color: white;
         }
 
-        /* Styling for mobile menu */
-        /* Styling for mobile menu */
         .mobile-menu {
             display: none;
             position: absolute;
@@ -114,7 +110,6 @@
             transition: background-color 0.3s ease;
         }
 
-        .mobile-menu a.active,
         .mobile-menu a:hover {
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
@@ -215,40 +210,41 @@
             </div>
             <div class="burger" id="menuToggle"><span></span></div>
             <nav>
-                <a class="active" href="#">Species</a>
-                <a href="#">About Us</a>
-                <a href="#">Our Work</a>
-                <a href="#">Get Involved</a>
+                <a href="#">Giới Thiệu</a>
+                <a href="#">Dự Án</a>
+                <a href="#">Động Vật</a>
+                <a href="#">Bảo Tồn</a>
+                <a href="#">Liên Hệ</a>
+                <a href="#">Trò Chơi</a>
+
             </nav>
             <a href="#" class="donate-link">Donate</a>
         </div>
-
-        <!-- Mobile menu (chỉ hiển thị khi bấm vào burger) -->
     </header>
+
     <div class="mobile-menu" id="mobileMenu">
-        <a class="active" href="#">Species</a>
-        <a href="#">About Us</a>
-        <a href="#">Our Work</a>
-        <a href="#">Get Involved</a>
+        <a href="#">Giới Thiệu</a>
+        <a href="#">Dự Án</a>
+        <a href="#">Động Vật</a>
+        <a href="#">Bảo Tồn</a>
+        <a href="#">Liên Hệ</a>
+        <a href="#">Trò Chơi</a>
+
     </div>
 
     <script>
-        // JavaScript để điều khiển menu burger
         document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menuToggle');
             const mobileMenu = document.getElementById('mobileMenu');
 
-            // Hiển thị hoặc ẩn menu mobile khi click vào burger
             menuToggle.addEventListener('click', function () {
                 menuToggle.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
 
-                // In ra console để kiểm tra
                 console.log('Menu toggle clicked');
                 console.log('Mobile menu visible:', mobileMenu.classList.contains('active'));
             });
 
-            // Đóng menu khi nhấp vào liên kết
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(function (link) {
                 link.addEventListener('click', function () {

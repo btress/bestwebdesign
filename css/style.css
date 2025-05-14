@@ -63,9 +63,9 @@ body {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, var(--dark-color) 0%, #33691e 100%);
+    background: #23272A;
     color: white;
-    padding: 6rem 0;
+    padding: 0px;
     position: relative;
     overflow: hidden;
 }

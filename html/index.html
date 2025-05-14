@@ -1,146 +1,63 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wildlife Conservation - Bảo Vệ Động Vật Hoang Dã</title>
-    <link rel="stylesheet" href="../css/style1.css" />
-
-    <!-- Thêm thư viện imagesLoaded -->
-    <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
-
 <body>
-
-    <section class="hero-section" id="home">
-        <header>
-        <div class="inner">
-            <div class="logo">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/wwf-logo.png" alt="WWF Logo" />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Wild<span class="text-warning">Life</span> Conservation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Dự Án</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#animals">Động Vật</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conservation">Bảo Tồn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Liên Hệ</a>
+                    </li>
+                </ul>
             </div>
-            <div class="burger" id="menuToggle"><span></span></div>
-            <nav>
-                <a class="active" href="#">Species</a>
-                <a href="#">About Us</a>
-                <a href="#">Our Work</a>
-                <a href="#">Get Involved</a>
-            </nav>
-            <a href="#" class="donate-link">Donate</a>
         </div>
-
-        <!-- Mobile menu (chỉ hiển thị khi bấm vào burger) -->
-    </header>
-    <div class="mobile-menu" id="mobileMenu">
-        <a class="active" href="#">Species</a>
-        <a href="#">About Us</a>
-        <a href="#">Our Work</a>
-        <a href="#">Get Involved</a>
-    </div>
-
-    <script>
-        // JavaScript để điều khiển menu burger
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const mobileMenu = document.getElementById('mobileMenu');
-
-            // Hiển thị hoặc ẩn menu mobile khi click vào burger
-            menuToggle.addEventListener('click', function () {
-                menuToggle.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-
-                // In ra console để kiểm tra
-                console.log('Menu toggle clicked');
-                console.log('Mobile menu visible:', mobileMenu.classList.contains('active'));
-            });
-
-            // Đóng menu khi nhấp vào liên kết
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(function (link) {
-                link.addEventListener('click', function () {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        });
-    </script>
-
-        <main>
-            <div id="slider">
-                <div class="slider-inner">
-                    <div id="slider-content">
-                        <div class="meta">Species</div>
-                        <h2 id="slide-title">Amur <br>Leopard</h2>
-                        <span data-slide-title="0">Amur <br>Leopard</span>
-                        <span data-slide-title="1">Asiatic <br>Lion</span>
-                        <span data-slide-title="2">Siberian <br>Tiger</span>
-                        <span data-slide-title="3">Brown <br>Bear</span>
-                        <div class="meta">Status</div>
-                        <div id="slide-status">Critically Endangered</div>
-                        <span data-slide-status="0">Critically Endangered</span>
-                        <span data-slide-status="1">Endangered</span>
-                        <span data-slide-status="2">Endangered</span>
-                        <span data-slide-status="3">Least Concern</span>
+    </nav>
+    <section class="hero-section" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 hero-content">
+                    <h1 class="hero-title">Bảo Vệ <span class="text-warning">Động Vật Hoang Dã</span></h1>
+                    <p class="hero-subtitle">Chung tay bảo vệ sự đa dạng sinh học và môi trường sống tự nhiên</p>
+                    <div class="d-flex">
+                        <a href="#projects" class="btn btn-primary me-3 my-button">Dự Án Của Chúng Tôi</a>
+                        <a href="#contact" class="btn btn-outline-light my-button">Tham Gia Ngay</a>
                     </div>
                 </div>
-
-                <!-- Hình ảnh slider -->
-                <!-- <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123024/leopard2.jpg" /> -->
-                <img src="image/voocchava.png" />
-                <img src="image/lion2.jpg" />
-                <img src="image/tiger2.jpg" />
-                <img src="image/bear2.jpg" />
-
-                <div id="pagination">
-                    <button class="active" data-slide="0"></button>
-                    <button data-slide="1"></button>
-                    <button data-slide="2"></button>
-                    <button data-slide="3"></button>
-                </div>
             </div>
-        </main>
-
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40525870-5"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'UA-40525870-5');
-        </script>
-
-        <!-- Mã JavaScript của bạn -->
-        <script src="../script/script.js"></script>
-
-        <script>
-            // Sử dụng imagesLoaded để đảm bảo hình ảnh được tải xong trước khi khởi tạo slider
-            imagesLoaded(document.querySelectorAll('img'), function () {
-                document.body.classList.remove('loading');
-
-                const el = document.getElementById('slider');
-                const imgs = Array.from(el.querySelectorAll('img'));
-
-                // Gọi hàm displacementSlider với hình ảnh đã tải
-                new displacementSlider({
-                    parent: el,
-                    images: imgs
-                });
-            });
-        </script>
+        </div>
     </section>
-
-    <section class="py-5" id="about">
+    <!-- <div style="height: 500px;"></div>
+    <div style="height: 500px;"></div>
+    <div style="height: 500px;"></div> -->
+  <section class="py-5" id="about">
     <div class="container reveal">
       <div class="row">
         <div class="col-lg-5 mb-4 mb-lg-0 reveal">
@@ -633,5 +550,4 @@
         window.addEventListener("load", checkReveal); //
   </script>
 </body>
-
 </html>
