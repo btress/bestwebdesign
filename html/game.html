@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi Bảo Vệ Động Vật</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #2e7d32;
+        }
+
+        .container {
+            width: 800px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #1b5e20;
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .animal-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 3px solid #4caf50;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animal-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .animal-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1b5e20;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .option {
+            width: 30%;
+            height: 120px;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .option img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info-panel {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f1f8e9;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .info-content {
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .btn-next {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-next:hover {
+            background-color: #388e3c;
+        }
+
+        .start-screen, .end-screen {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .btn-start {
+            padding: 15px 30px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-start:hover {
+            background-color: #388e3c;
+        }
+
+        .feedback {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .correct {
+            color: #4caf50;
+        }
+
+        .incorrect {
+            color: #f44336;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .final-score {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #1b5e20;
+        }
+
+        .restart-btn {
+            padding: 12px 25px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .restart-btn:hover {
+            background-color: #388e3c;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background-color: #4caf50;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div class="start-screen" id="startScreen">
+            <h1>Trò Chơi Bảo Vệ Động Vật</h1>
+            <p>Hãy giúp các loài động vật đang bị đe dọa tuyệt chủng bằng cách chọn đúng hệ sinh thái phù hợp với chúng!</p>
+            <p>Trả lời đúng 10 câu hỏi để đạt 100 điểm.</p>
+            <button class="btn-start" id="btnStart">Bắt Đầu</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div class="game-container hidden" id="gameScreen">
+            <div class="score-container">
+                <div>Câu hỏi: <span id="questionNumber">1</span>/10</div>
+                <div>Điểm: <span id="score">0</span></div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="animal-name" id="animalName">Tên Động Vật</div>
+            <div class="animal-container">
+                <img class="animal-img" id="animalImage" src="" alt="Động vật cần bảo vệ">
+            </div>
+
+            <p>Chọn hệ sinh thái phù hợp cho loài động vật này:</p>
+            <div class="options-container" id="optionsContainer">
+                <div class="option" data-index="0">
+                    <img src="" alt="Hệ sinh thái 1">
+                </div>
+                <div class="option" data-index="1">
+                    <img src="" alt="Hệ sinh thái 2">
+                </div>
+                <div class="option" data-index="2">
+                    <img src="" alt="Hệ sinh thái 3">
+                </div>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <div class="info-panel" id="infoPanel">
+                <div class="info-content" id="animalInfo"></div>
+                <button class="btn-next" id="btnNext">Câu hỏi tiếp theo</button>
+            </div>
+        </div>
+
+        <!-- End Screen -->
+        <div class="end-screen hidden" id="endScreen">
+            <h1>Kết thúc trò chơi!</h1>
+            <p>Chúc mừng! Bạn đã hoàn thành trò chơi bảo vệ động vật.</p>
+            <div class="final-score">Điểm số của bạn: <span id="finalScore">0</span>/100</div>
+            <button class="restart-btn" id="restartBtn">Chơi lại</button>
+        </div>
+    </div>
+
+    <script>
+        // Dữ liệu cho trò chơi
+        const animals = [
+            {
+                name: "Hổ Sumatra",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng nhiệt đới
+                    "/api/placeholder/250/120", // Sa mạc
+                    "/api/placeholder/250/120"  // Đồng cỏ
+                ],
+                info: "Hổ Sumatra (Panthera tigris sumatrae) là một trong những loài hổ nhỏ nhất và cũng là loài hổ đang bị đe dọa nghiêm trọng với chỉ còn khoảng 400-600 cá thể trong tự nhiên. Chúng sinh sống trong các khu rừng nhiệt đới ở đảo Sumatra, Indonesia. Nguyên nhân chính dẫn đến sự suy giảm số lượng của chúng là mất môi trường sống do nạn phá rừng, săn trộm và buôn bán bất hợp pháp."
+            },
+            {
+                name: "Gấu Trúc",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 1,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng ôn đới
+                    "/api/placeholder/250/120", // Rừng tre
+                    "/api/placeholder/250/120"  // Sa mạc
+                ],
+                info: "Gấu trúc (Ailuropoda melanoleuca) là loài vật biểu tượng của Trung Quốc và cũng là biểu tượng của nỗ lực bảo tồn động vật toàn cầu. Chúng sinh sống trong các khu rừng tre ở vùng núi trung tâm Trung Quốc. Chế độ ăn của gấu trúc gồm 99% là tre. Hiện nay, số lượng gấu trúc trong tự nhiên đã tăng lên khoảng 1,800 cá thể nhờ các nỗ lực bảo tồn, nhưng vẫn được xếp vào danh sách các loài dễ bị tổn thương."
+            },
+            {
+                name: "Voi Châu Phi",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 2,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng nhiệt đới
+                    "/api/placeholder/250/120", // Rừng tre
+                    "/api/placeholder/250/120"  // Đồng cỏ Savanna
+                ],
+                info: "Voi châu Phi (Loxodonta africana) là loài động vật có vú trên cạn lớn nhất trên thế giới. Chúng sinh sống tại các đồng cỏ Savanna, rừng thưa và sa mạc ở châu Phi. Mặc dù được bảo vệ, số lượng voi vẫn giảm mạnh do nạn săn trộm lấy ngà và mất môi trường sống. Voi đóng vai trò quan trọng trong hệ sinh thái, giúp duy trì cấu trúc thảo nguyên và phân tán hạt giống."
+            },
+            {
+                name: "Rùa Biển Hawksbill",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rạn san hô
+                    "/api/placeholder/250/120", // Hồ nước ngọt
+                    "/api/placeholder/250/120"  // Đầm lầy
+                ],
+                info: "Rùa biển Hawksbill (Eretmochelys imbricata) là loài rùa biển nguy cấp sống trong các vùng biển nhiệt đới trên toàn thế giới, đặc biệt là quanh các rạn san hô. Chúng nổi tiếng với chiếc mai đẹp và hình dáng mỏ đặc trưng. Rùa Hawksbill đóng vai trò quan trọng trong việc duy trì sức khỏe của các rạn san hô bằng cách ăn các loài bọt biển xâm lấn. Hiện chỉ còn khoảng 20,000 con cái sinh sản trên toàn thế giới."
+            },
+            {
+                name: "Báo Tuyết",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 1,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng nhiệt đới
+                    "/api/placeholder/250/120", // Vùng núi cao
+                    "/api/placeholder/250/120"  // Đồng cỏ
+                ],
+                info: "Báo tuyết (Panthera uncia) là loài mèo lớn sống ở các vùng núi cao của Trung Á, Himalaya và Tây Tạng. Chúng được biết đến với bộ lông dày, đuôi dài và khả năng thích nghi tuyệt vời với khí hậu lạnh và địa hình khó khăn. Số lượng báo tuyết trong tự nhiên ước tính chỉ còn 4,000-6,500 cá thể và đang giảm do săn bắn trộm, mất môi trường sống và giảm con mồi tự nhiên."
+            },
+            {
+                name: "Cá Heo Vaquita",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 2,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Đại dương sâu
+                    "/api/placeholder/250/120", // Sông ngòi
+                    "/api/placeholder/250/120"  // Vịnh biển nông
+                ],
+                info: "Cá heo Vaquita (Phocoena sinus) là loài cá heo nhỏ nhất thế giới và cũng là loài động vật biển có nguy cơ tuyệt chủng cao nhất. Chúng chỉ sống ở phía bắc Vịnh California, Mexico. Hiện nay, số lượng cá thể còn lại ước tính chỉ còn dưới 10 con. Nguyên nhân chính gây ra sự suy giảm này là việc chúng vô tình bị mắc vào lưới đánh cá bất hợp pháp."
+            },
+            {
+                name: "Đười ươi Borneo",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng mưa nhiệt đới
+                    "/api/placeholder/250/120", // Đồng cỏ
+                    "/api/placeholder/250/120"  // Đầm lầy
+                ],
+                info: "Đười ươi Borneo (Pongo pygmaeus) là loài linh trưởng lớn sống trên các cây trong rừng mưa nhiệt đới ở đảo Borneo. Chúng được biết đến là loài vượn thông minh, có khả năng sử dụng công cụ và xây tổ. Số lượng đười ươi Borneo đã giảm hơn 50% trong 60 năm qua, chủ yếu do mất môi trường sống từ việc phá rừng cho các đồn điền dầu cọ, khai thác gỗ và cháy rừng."
+            },
+            {
+                name: "Tê giác Javan",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 1,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Sa mạc
+                    "/api/placeholder/250/120", // Rừng nhiệt đới ẩm
+                    "/api/placeholder/250/120"  // Đồng cỏ
+                ],
+                info: "Tê giác Javan (Rhinoceros sondaicus) là một trong những loài động vật có vú nguy cấp nhất thế giới với ước tính chỉ còn khoảng 74 cá thể, chỉ sống trong Vườn Quốc gia Ujung Kulon ở Indonesia. Chúng sinh sống trong các khu rừng nhiệt đới ẩm và đầm lầy. Nguyên nhân chính dẫn đến sự tuyệt chủng của chúng là săn bắn để lấy sừng và mất môi trường sống."
+            },
+            {
+                name: "Cáo Tuyết Bắc Cực",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 2,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng ôn đới
+                    "/api/placeholder/250/120", // Đồng cỏ
+                    "/api/placeholder/250/120"  // Vùng Bắc Cực
+                ],
+                info: "Cáo tuyết Bắc Cực (Vulpes lagopus) là loài cáo nhỏ sống ở các vùng đất lạnh giá của Bắc Cực. Chúng có bộ lông dày màu trắng vào mùa đông và chuyển sang màu nâu hoặc xám vào mùa hè để ngụy trang. Mặc dù hiện không bị đe dọa tuyệt chủng, nhưng biến đổi khí hậu đang ảnh hưởng nghiêm trọng đến môi trường sống của chúng, và sự mở rộng về phía bắc của cáo đỏ đang tạo ra sự cạnh tranh về thức ăn và nơi ở."
+            },
+            {
+                name: "Khỉ sư tử vàng",
+                image: "/api/placeholder/300/300",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "/api/placeholder/250/120", // Rừng Đại Tây Dương
+                    "/api/placeholder/250/120", // Sa mạc
+                    "/api/placeholder/250/120"  // Đồng cỏ
+                ],
+                info: "Khỉ sư tử vàng (Leontopithecus rosalia) là loài linh trưởng nhỏ, nặng chỉ khoảng 600g và có bộ lông màu vàng rực rỡ. Chúng chỉ sống trong khu vực nhỏ của rừng Đại Tây Dương ở đông nam Brazil. Trước đây, loài này gần như tuyệt chủng với chỉ 200 cá thể còn sót lại, nhưng nhờ các nỗ lực bảo tồn, số lượng đã tăng lên khoảng 3,500 cá thể, mặc dù vẫn bị đe dọa bởi nạn phá rừng và buôn bán động vật hoang dã."
+            }
+        ];
+
+        // Variables
+        let currentQuestion = 0;
+        let score = 0;
+        let shuffledAnimals = [];
+
+        // Elements
+        const startScreen = document.getElementById('startScreen');
+        const gameScreen = document.getElementById('gameScreen');
+        const endScreen = document.getElementById('endScreen');
+        const btnStart = document.getElementById('btnStart');
+        const animalName = document.getElementById('animalName');
+        const animalImage = document.getElementById('animalImage');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const feedback = document.getElementById('feedback');
+        const infoPanel = document.getElementById('infoPanel');
+        const animalInfo = document.getElementById('animalInfo');
+        const btnNext = document.getElementById('btnNext');
+        const questionNumber = document.getElementById('questionNumber');
+        const scoreElement = document.getElementById('score');
+        const finalScore = document.getElementById('finalScore');
+        const restartBtn = document.getElementById('restartBtn');
+        const progressBar = document.getElementById('progressBar');
+
+        // Initialize game
+        function initGame() {
+            // Shuffle animals array
+            shuffledAnimals = [...animals].sort(() => Math.random() - 0.5);
+            currentQuestion = 0;
+            score = 0;
+            
+            // Update display
+            updateQuestion();
+            
+            // Show game screen
+            startScreen.classList.add('hidden');
+            gameScreen.classList.remove('hidden');
+            endScreen.classList.add('hidden');
+        }
+
+        // Update question
+        function updateQuestion() {
+            // Get current animal
+            const animal = shuffledAnimals[currentQuestion];
+            
+            // Update display
+            animalName.textContent = animal.name;
+            animalImage.src = animal.image;
+            questionNumber.textContent = currentQuestion + 1;
+            scoreElement.textContent = score;
+            progressBar.style.width = `${(currentQuestion) * 10}%`;
+            
+            // Hide feedback and info
+            feedback.textContent = '';
+            feedback.classList.remove('correct', 'incorrect');
+            infoPanel.style.display = 'none';
+            
+            // Update options
+            const options = optionsContainer.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                const img = option.querySelector('img');
+                img.src = animal.ecosystems[index];
+                
+                // Add event listener
+                option.onclick = () => selectOption(index);
+            });
+        }
+
+        // Select option
+        function selectOption(index) {
+            const animal = shuffledAnimals[currentQuestion];
+            const isCorrect = index === animal.correctEcosystem;
+            
+            // Remove click events
+            const options = optionsContainer.querySelectorAll('.option');
+            options.forEach(option => {
+                option.onclick = null;
+            });
+            
+            // Update score and feedback
+            if (isCorrect) {
+                score += 10;
+                scoreElement.textContent = score;
+                feedback.textContent = 'Chính xác!';
+                feedback.classList.add('correct');
+            } else {
+                feedback.textContent = 'Không đúng! Hệ sinh thái đúng là lựa chọn ' + (animal.correctEcosystem + 1);
+                feedback.classList.add('incorrect');
+            }
+            
+            // Show info
+            animalInfo.textContent = animal.info;
+            infoPanel.style.display = 'block';
+        }
+
+        // Next question
+        function nextQuestion() {
+            currentQuestion++;
+            
+            if (currentQuestion < 10) {
+                updateQuestion();
+            } else {
+                // End game
+                gameScreen.classList.add('hidden');
+                endScreen.classList.remove('hidden');
+                finalScore.textContent = score;
+            }
+        }
+
+        // Event listeners
+        btnStart.addEventListener('click', initGame);
+        btnNext.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', initGame);
+    </script>
+</body>
+</html>
