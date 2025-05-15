@@ -7,6 +7,12 @@
     --navbar-default-color : rgb(11, 83, 6);
 }
 /* Ghi đè lên class bg-success của Bootstrap */
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #23272A !important;
+}
+
+
 .reveal {
     opacity: 0;
     transform: translateY(30px);

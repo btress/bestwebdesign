@@ -1,4 +1,4 @@
-const displacementSlider = function(opts) {
+const displacementSlider = function (opts) {
 
     let vertex = `
         varying vec2 vUv;
@@ -47,7 +47,7 @@ const displacementSlider = function(opts) {
 
     let renderW, renderH;
 
-    if( renderWidth > canvasWidth ) {
+    if (renderWidth > canvasWidth) {
         renderW = renderWidth;
     } else {
         renderW = canvasWidth;
@@ -59,25 +59,25 @@ const displacementSlider = function(opts) {
         antialias: false,
     });
 
-    renderer.setPixelRatio( window.devicePixelRatio );
-    renderer.setClearColor( 0x23272A, 1.0 );
-    renderer.setSize( renderW, renderH );
-    parent.appendChild( renderer.domElement );
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x23272A, 1.0);
+    renderer.setSize(renderW, renderH);
+    parent.appendChild(renderer.domElement);
 
     let loader = new THREE.TextureLoader();
-    loader.crossOrigin = "anonymous";
+    loader.crossOrigin = "anonymous";
 
-    images.forEach( ( img ) => {
+    images.forEach((img) => {
 
-        image = loader.load( img.getAttribute( 'src' ) + '?v=' + Date.now() );
+        image = loader.load(img.getAttribute('src') + '?v=' + Date.now());
         image.magFilter = image.minFilter = THREE.LinearFilter;
         image.anisotropy = renderer.capabilities.getMaxAnisotropy();
-        sliderImages.push( image );
+        sliderImages.push(image);
 
     });
 
     let scene = new THREE.Scene();
-    scene.background = new THREE.Color( 0x23272A );
+    scene.background = new THREE.Color(0x23272A);
     let camera = new THREE.OrthographicCamera(
         renderWidth / -2,
         renderWidth / 2,
@@ -110,28 +110,28 @@ const displacementSlider = function(opts) {
     object.position.set(0, 0, 0);
     scene.add(object);
 
-    let addEvents = function(){
+    let addEvents = function () {
 
         let pagButtons = Array.from(document.getElementById('pagination').querySelectorAll('button'));
         let isAnimating = false;
 
-        pagButtons.forEach( (el) => {
+        pagButtons.forEach((el) => {
 
-            el.addEventListener('click', function() {
+            el.addEventListener('click', function () {
 
-                if( !isAnimating ) {
+                if (!isAnimating) {
 
                     isAnimating = true;
 
                     document.getElementById('pagination').querySelectorAll('.active')[0].className = '';
                     this.className = 'active';
 
-                    let slideId = parseInt( this.dataset.slide, 10 );
+                    let slideId = parseInt(this.dataset.slide, 10);
 
                     mat.uniforms.nextImage.value = sliderImages[slideId];
                     mat.uniforms.nextImage.needsUpdate = true;
 
-                    TweenLite.to( mat.uniforms.dispFactor, 1, {
+                    TweenLite.to(mat.uniforms.dispFactor, 1, {
                         value: 1,
                         ease: 'Expo.easeInOut',
                         onComplete: function () {
@@ -147,7 +147,7 @@ const displacementSlider = function(opts) {
                     let nextSlideTitle = document.querySelectorAll(`[data-slide-title="${slideId}"]`)[0].innerHTML;
                     let nextSlideStatus = document.querySelectorAll(`[data-slide-status="${slideId}"]`)[0].innerHTML;
 
-                    TweenLite.fromTo( slideTitleEl, 0.5,
+                    TweenLite.fromTo(slideTitleEl, 0.5,
                         {
                             autoAlpha: 1,
                             y: 0
@@ -159,14 +159,14 @@ const displacementSlider = function(opts) {
                             onComplete: function () {
                                 slideTitleEl.innerHTML = nextSlideTitle;
 
-                                TweenLite.to( slideTitleEl, 0.5, {
+                                TweenLite.to(slideTitleEl, 0.5, {
                                     autoAlpha: 1,
                                     y: 0,
                                 })
                             }
                         });
 
-                    TweenLite.fromTo( slideStatusEl, 0.5,
+                    TweenLite.fromTo(slideStatusEl, 0.5,
                         {
                             autoAlpha: 1,
                             y: 0
@@ -178,7 +178,7 @@ const displacementSlider = function(opts) {
                             onComplete: function () {
                                 slideStatusEl.innerHTML = nextSlideStatus;
 
-                                TweenLite.to( slideStatusEl, 0.5, {
+                                TweenLite.to(slideStatusEl, 0.5, {
                                     autoAlpha: 1,
                                     y: 0,
                                     delay: 0.1,
@@ -192,25 +192,39 @@ const displacementSlider = function(opts) {
 
         });
 
-        var i = 0;
+        let i = 1;
+        let override = false;
+
+        // Gán sự kiện click cho các nút slide
+        pagButtons.forEach((el) => {
+            el.addEventListener('click', () => {
+                const clickedSlide = parseInt(el.dataset.slide);
+                i = (clickedSlide + 1) % pagButtons.length; // tiếp tục từ slide kế tiếp
+                override = true; // đánh dấu là vừa click tay
+                el.click(); // hiện slide vừa click
+                console.log("User clicked slide:", clickedSlide);
+            });
+        });
+
         setInterval(() => {
-            pagButtons[i].click();
-            if(i === pagButtons.length-1) {
-                i = 0;
+            if (!override) {
+                pagButtons[i].click(); // auto chạy
+                i = (i + 1) % pagButtons.length;
             } else {
-                ++i;
+                override = false; // bỏ qua 1 lần sau khi click, rồi tiếp tục auto
             }
-        }, 2200);
+        }, 1100);
+
 
     };
 
     addEvents();
 
-    window.addEventListener( 'resize' , function(e) {
+    window.addEventListener('resize', function (e) {
         renderer.setSize(renderW, renderH);
     });
 
-    let animate = function() {
+    let animate = function () {
         requestAnimationFrame(animate);
 
         renderer.render(scene, camera);
@@ -218,7 +232,7 @@ const displacementSlider = function(opts) {
     animate();
 };
 
-imagesLoaded( document.querySelectorAll('img'), () => {
+imagesLoaded(document.querySelectorAll('img'), () => {
 
     document.body.classList.remove('loading');
 

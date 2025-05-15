@@ -152,11 +152,14 @@ select {
 
 button,
 html input[type="button"],
+input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	-webkit-appearance: button;
+	appearance: button;          /* Thuộc tính chuẩn */
+	-webkit-appearance: button;  /* Hỗ trợ Safari/Chrome cũ */
 	cursor: pointer;
 }
+
 
 button[disabled],
 html input[disabled] {
@@ -170,11 +173,13 @@ input[type="radio"] {
 }
 
 input[type="search"] {
-	-webkit-appearance: textfield;
+	appearance: textfield;              /* ✅ Thuộc tính chuẩn */
+	-webkit-appearance: textfield;      /* ✅ Cho Safari/Chrome cũ */
 	-moz-box-sizing: content-box;
 	-webkit-box-sizing: content-box;
 	box-sizing: content-box;
 }
+
 
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
@@ -280,13 +285,12 @@ header:before {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: white;
 	text-align: center;
 }
 
 .logo img {
-	width: 45px;
-	margin-top: 10px;
+	width: 100px;
+	margin-top: -5px;
 }
 
 nav {
