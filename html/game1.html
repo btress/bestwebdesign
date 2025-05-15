@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi Bảo Vệ Động Vật</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e8f5e9;
+            margin: 0;
+            padding: 20px;
+            color: #2e7d32;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+        .score, .moves, .target {
+            background-color: #a5d6a7;
+            padding: 10px;
+            border-radius: 10px;
+            width: 120px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            gap: 2px;
+            background-color: #81c784;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: #c8e6c9;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        .cell:hover {
+            transform: scale(1.05);
+        }
+        .cell.selected {
+            border: 3px solid #ffeb3b;
+            box-sizing: border-box;
+        }
+        .cell.highlighted {
+            background-color: #ffccbc;
+        }
+        .animal {
+            font-size: 30px;
+            user-select: none;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #c8e6c9;
+            display: none;
+            text-align: center;
+        }
+        .level-complete {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .level-complete-content {
+            background-color: #e8f5e9;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+        }
+        .facts {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #c8e6c9;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffeb3b;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trò Chơi Ghép Động Vật</h1>
+        <p>Ghép 3 hoặc nhiều động vật cùng loại để bảo vệ chúng khỏi nguy hiểm!</p>
+    </header>
+
+    <div class="game-info">
+        <div class="score">Điểm: <span id="score">0</span></div>
+        <div class="moves">Lượt: <span id="moves">20</span></div>
+        <div class="target">Mục tiêu: <span id="target">500</span></div>
+    </div>
+
+    <div class="game-board" id="game-board"></div>
+
+    <button id="restart-button">Chơi Lại</button>
+    <div id="message" class="message"></div>
+
+    <div class="facts">
+        <h3>Thông tin bảo vệ động vật</h3>
+        <p id="animal-fact">Mỗi năm có hàng nghìn loài động vật đang đối mặt với nguy cơ tuyệt chủng. Hãy chơi để tìm hiểu thêm về chúng!</p>
+    </div>
+
+    <div class="level-complete" id="level-complete">
+        <div class="level-complete-content">
+            <h2>Xuất sắc!</h2>
+            <p>Bạn đã hoàn thành cấp độ và cứu được nhiều động vật!</p>
+            <p>Điểm số của bạn: <span id="final-score">0</span></p>
+            <button id="next-level">Cấp độ tiếp theo</button>
+        </div>
+    </div>
+
+    <div id="popup" class="popup"></div>
+
+    <script>
+        // Các biến toàn cục
+        const boardSize = 8;
+        const animals = ['🐶', '🐱', '🐼', '🐰', '🐢', '🦊'];
+        let board = [];
+        let selectedCell = null;
+        let score = 0;
+        let moves = 20;
+        let target = 500;
+        let level = 1;
+        let isSwapping = false;
+
+        // Thông tin bảo vệ động vật
+        const animalFacts = [
+            "Có hơn 1000 loài động vật trên thế giới đang bị đe dọa tuyệt chủng.",
+            "Nạn săn bắt trái phép là một trong những nguyên nhân chính dẫn đến tuyệt chủng.",
+            "Gấu trúc từng đối mặt với nguy cơ tuyệt chủng nhưng đã phục hồi nhờ nỗ lực bảo tồn.",
+            "Rùa biển đang gặp nguy hiểm do rác thải nhựa và biến đổi khí hậu.",
+            "Hổ là một trong những loài mèo lớn đang bị đe dọa nghiêm trọng.",
+            "Nhiều loài động vật mất môi trường sống do nạn phá rừng.",
+            "Nạn buôn bán động vật hoang dã là ngành tội phạm lớn thứ 4 trên thế giới.",
+            "Ô nhiễm đại dương đe dọa hơn 700 loài sinh vật biển.",
+            "Mỗi năm, 8 triệu tấn rác thải nhựa đổ ra đại dương, ảnh hưởng đến động vật biển.",
+            "Bạn có thể giúp bảo vệ động vật bằng cách giảm sử dụng nhựa và tham gia các tổ chức bảo tồn."
+        ];
+
+        // Khởi tạo trò chơi
+        function initGame() {
+            createBoard();
+            updateScore();
+            updateMoves();
+            updateTarget();
+            updateAnimalFact();
+            
+            // Thêm sự kiện cho nút chơi lại
+            document.getElementById('restart-button').addEventListener('click', restartGame);
+            
+            // Thêm sự kiện cho nút cấp độ tiếp theo
+            document.getElementById('next-level').addEventListener('click', nextLevel);
+        }
+
+        // Tạo bảng trò chơi
+        function createBoard() {
+            const gameBoard = document.getElementById('game-board');
+            gameBoard.innerHTML = '';
+            board = [];
+
+            for (let row = 0; row < boardSize; row++) {
+                board[row] = [];
+                for (let col = 0; col < boardSize; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    
+                    let animal;
+                    do {
+                        animal = animals[Math.floor(Math.random() * animals.length)];
+                    } while (
+                        // Tránh tạo ra các trận đấu sẵn có
+                        (col >= 2 && board[row][col-1] === animal && board[row][col-2] === animal) ||
+                        (row >= 2 && board[row-1][col] === animal && board[row-2][col] === animal)
+                    );
+                    
+                    board[row][col] = animal;
+                    
+                    const animalSpan = document.createElement('span');
+                    animalSpan.className = 'animal';
+                    animalSpan.textContent = animal;
+                    
+                    cell.appendChild(animalSpan);
+                    cell.addEventListener('click', () => cellClick(row, col));
+                    
+                    gameBoard.appendChild(cell);
+                }
+            }
+            
+            // Kiểm tra xem có nước đi hợp lệ không
+            setTimeout(findPossibleMoves, 500);
+        }
+
+        // Xử lý sự kiện click vào ô
+        function cellClick(row, col) {
+            if (isSwapping || moves <= 0) return;
+            
+            const cell = getCellElement(row, col);
+            
+            if (selectedCell === null) {
+                // Chọn ô đầu tiên
+                selectedCell = {row, col};
+                cell.classList.add('selected');
+            } else {
+                // Đã có ô được chọn, kiểm tra xem có thể hoán đổi không
+                const selectedCellElement = getCellElement(selectedCell.row, selectedCell.col);
+                
+                // Bỏ chọn ô hiện tại
+                selectedCellElement.classList.remove('selected');
+                
+                // Kiểm tra xem hai ô có kề nhau không
+                const isAdjacent = 
+                    (Math.abs(selectedCell.row - row) === 1 && selectedCell.col === col) ||
+                    (Math.abs(selectedCell.col - col) === 1 && selectedCell.row === row);
+                
+                if (isAdjacent) {
+                    // Thử hoán đổi
+                    swapCells(selectedCell.row, selectedCell.col, row, col);
+                } else {
+                    // Nếu không kề nhau, chọn ô mới
+                    selectedCell = {row, col};
+                    cell.classList.add('selected');
+                }
+            }
+        }
+
+        // Hoán đổi hai ô
+        function swapCells(row1, col1, row2, col2) {
+            isSwapping = true;
+            
+            // Hoán đổi giá trị trong mảng board
+            const temp = board[row1][col1];
+            board[row1][col1] = board[row2][col2];
+            board[row2][col2] = temp;
+            
+            // Cập nhật giao diện
+            const cell1 = getCellElement(row1, col1);
+            const cell2 = getCellElement(row2, col2);
+            
+            cell1.querySelector('.animal').textContent = board[row1][col1];
+            cell2.querySelector('.animal').textContent = board[row2][col2];
+            
+            // Kiểm tra xem có khớp nào được tạo ra không
+            const matches = findMatches();
+            
+            if (matches.length > 0) {
+                // Có khớp, xử lý khớp
+                updateMoves(-1);
+                processMatches(matches);
+            } else {
+                // Không có khớp, hoán đổi lại
+                setTimeout(() => {
+                    // Hoán đổi giá trị trong mảng board lại
+                    board[row1][col1] = board[row2][col2];
+                    board[row2][col2] = temp;
+                    
+                    // Cập nhật giao diện
+                    cell1.querySelector('.animal').textContent = board[row1][col1];
+                    cell2.querySelector('.animal').textContent = board[row2][col2];
+                    
+                    isSwapping = false;
+                }, 500);
+            }
+            
+            // Đặt lại ô đã chọn
+            selectedCell = null;
+        }
+
+        // Tìm tất cả các khớp trên bảng
+        function findMatches() {
+            const matches = [];
+            
+            // Kiểm tra khớp theo hàng
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col < boardSize - 2; col++) {
+                    const animal = board[row][col];
+                    if (animal === board[row][col+1] && animal === board[row][col+2]) {
+                        // Tìm thấy khớp 3 con vật theo hàng
+                        let matchLength = 3;
+                        while (col + matchLength < boardSize && board[row][col+matchLength] === animal) {
+                            matchLength++;
+                        }
+                        
+                        const match = {
+                            type: 'row',
+                            row: row,
+                            col: col,
+                            length: matchLength,
+                            animal: animal
+                        };
+                        
+                        matches.push(match);
+                        col += matchLength - 1; // Bỏ qua các ô đã kiểm tra
+                    }
+                }
+            }
+            
+            // Kiểm tra khớp theo cột
+            for (let col = 0; col < boardSize; col++) {
+                for (let row = 0; row < boardSize - 2; row++) {
+                    const animal = board[row][col];
+                    if (animal === board[row+1][col] && animal === board[row+2][col]) {
+                        // Tìm thấy khớp 3 con vật theo cột
+                        let matchLength = 3;
+                        while (row + matchLength < boardSize && board[row+matchLength][col] === animal) {
+                            matchLength++;
+                        }
+                        
+                        const match = {
+                            type: 'column',
+                            row: row,
+                            col: col,
+                            length: matchLength,
+                            animal: animal
+                        };
+                        
+                        matches.push(match);
+                        row += matchLength - 1; // Bỏ qua các ô đã kiểm tra
+                    }
+                }
+            }
+            
+            return matches;
+        }
+
+        // Xử lý các khớp
+        function processMatches(matches) {
+            // Đánh dấu các ô khớp
+            for (const match of matches) {
+                if (match.type === 'row') {
+                    for (let i = 0; i < match.length; i++) {
+                        const cell = getCellElement(match.row, match.col + i);
+                        cell.classList.add('highlighted');
+                    }
+                } else if (match.type === 'column') {
+                    for (let i = 0; i < match.length; i++) {
+                        const cell = getCellElement(match.row + i, match.col);
+                        cell.classList.add('highlighted');
+                    }
+                }
+            }
+            
+            // Tính điểm
+            let points = 0;
+            for (const match of matches) {
+                points += match.length * 10;
+                
+                // Bonus cho khớp lớn hơn 3
+                if (match.length > 3) {
+                    points += (match.length - 3) * 10;
+                }
+                
+                // Hiển thị popup
+                showPopup(`+${match.length * 10} điểm!`);
+            }
+            
+            updateScore(points);
+            
+            // Sau một khoảng thời gian, xóa các ô khớp và làm rơi các ô phía trên
+            setTimeout(() => {
+                // Xóa các ô khớp
+                for (const match of matches) {
+                    if (match.type === 'row') {
+                        for (let i = 0; i < match.length; i++) {
+                            board[match.row][match.col + i] = null;
+                        }
+                    } else if (match.type === 'column') {
+                        for (let i = 0; i < match.length; i++) {
+                            board[match.row + i][match.col] = null;
+                        }
+                    }
+                }
+                
+                // Bỏ đánh dấu
+                const highlightedCells = document.querySelectorAll('.highlighted');
+                highlightedCells.forEach(cell => {
+                    cell.classList.remove('highlighted');
+                });
+                
+                // Làm rơi các ô và điền lại các ô trống
+                fillEmptyCells();
+            }, 500);
+        }
+
+        // Điền các ô trống và làm rơi các ô
+        function fillEmptyCells() {
+            // Làm rơi các ô theo cột
+            for (let col = 0; col < boardSize; col++) {
+                // Đếm số ô trống trong cột
+                let emptyCount = 0;
+                
+                // Di chuyển các ô xuống
+                for (let row = boardSize - 1; row >= 0; row--) {
+                    if (board[row][col] === null) {
+                        emptyCount++;
+                    } else if (emptyCount > 0) {
+                        // Di chuyển ô xuống
+                        board[row + emptyCount][col] = board[row][col];
+                        board[row][col] = null;
+                        
+                        // Cập nhật giao diện
+                        const targetCell = getCellElement(row + emptyCount, col);
+                        targetCell.querySelector('.animal').textContent = board[row + emptyCount][col];
+                    }
+                }
+                
+                // Điền các ô trống ở đầu cột
+                for (let row = 0; row < emptyCount; row++) {
+                    const animal = animals[Math.floor(Math.random() * animals.length)];
+                    board[row][col] = animal;
+                    
+                    // Cập nhật giao diện
+                    const cell = getCellElement(row, col);
+                    cell.querySelector('.animal').textContent = animal;
+                }
+            }
+            
+            // Chờ một chút để hoàn thành hiệu ứng rơi
+            setTimeout(() => {
+                // Kiểm tra xem có khớp mới không
+                const newMatches = findMatches();
+                if (newMatches.length > 0) {
+                    processMatches(newMatches);
+                } else {
+                    isSwapping = false;
+                    
+                    // Kiểm tra điều kiện thắng
+                    checkWinCondition();
+                    
+                    // Kiểm tra xem còn nước đi hợp lệ không
+                    findPossibleMoves();
+                }
+            }, 500);
+        }
+
+        // Kiểm tra điều kiện thắng
+        function checkWinCondition() {
+            if (score >= target) {
+                // Hiển thị thông báo thắng
+                document.getElementById('final-score').textContent = score;
+                document.getElementById('level-complete').style.display = 'flex';
+            } else if (moves <= 0) {
+                // Hết lượt, kiểm tra xem có đạt mục tiêu không
+                if (score >= target) {
+                    document.getElementById('final-score').textContent = score;
+                    document.getElementById('level-complete').style.display = 'flex';
+                } else {
+                    // Thua cuộc
+                    const message = document.getElementById('message');
+                    message.style.display = 'block';
+                    message.textContent = 'Bạn đã hết lượt đi! Hãy thử lại!';
+                }
+            }
+        }
+
+        // Tìm các nước đi có thể
+        function findPossibleMoves() {
+            const possibleMoves = [];
+            
+            // Kiểm tra các hoán đổi theo hàng
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col < boardSize - 1; col++) {
+                    // Hoán đổi tạm thời
+                    const temp = board[row][col];
+                    board[row][col] = board[row][col + 1];
+                    board[row][col + 1] = temp;
+                    
+                    // Kiểm tra xem có khớp nào được tạo ra không
+                    const matches = findMatches();
+                    if (matches.length > 0) {
+                        possibleMoves.push({row1: row, col1: col, row2: row, col2: col + 1});
+                    }
+                    
+                    // Hoán đổi lại
+                    board[row][col + 1] = board[row][col];
+                    board[row][col] = temp;
+                }
+            }
+            
+            // Kiểm tra các hoán đổi theo cột
+            for (let col = 0; col < boardSize; col++) {
+                for (let row = 0; row < boardSize - 1; row++) {
+                    // Hoán đổi tạm thời
+                    const temp = board[row][col];
+                    board[row][col] = board[row + 1][col];
+                    board[row + 1][col] = temp;
+                    
+                    // Kiểm tra xem có khớp nào được tạo ra không
+                    const matches = findMatches();
+                    if (matches.length > 0) {
+                        possibleMoves.push({row1: row, col1: col, row2: row + 1, col2: col});
+                    }
+                    
+                    // Hoán đổi lại
+                    board[row + 1][col] = board[row][col];
+                    board[row][col] = temp;
+                }
+            }
+            
+            if (possibleMoves.length === 0 && moves > 0) {
+                // Không có nước đi nào, xáo trộn bảng
+                const message = document.getElementById('message');
+                message.style.display = 'block';
+                message.textContent = 'Không còn nước đi hợp lệ! Đang xáo trộn bảng...';
+                
+                setTimeout(() => {
+                    shuffleBoard();
+                    message.style.display = 'none';
+                }, 1500);
+            }
+            
+            return possibleMoves;
+        }
+
+        // Xáo trộn bảng
+        function shuffleBoard() {
+            // Tạo mảng tạm thời chứa tất cả các con vật trên bảng
+            const allAnimals = [];
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col < boardSize; col++) {
+                    allAnimals.push(board[row][col]);
+                }
+            }
+            
+            // Xáo trộn mảng
+            for (let i = allAnimals.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allAnimals[i], allAnimals[j]] = [allAnimals[j], allAnimals[i]];
+            }
+            
+            // Đặt lại vào bảng
+            let index = 0;
+            for (let row = 0; row < boardSize; row++) {
+                for (let col = 0; col < boardSize; col++) {
+                    board[row][col] = allAnimals[index++];
+                    const cell = getCellElement(row, col);
+                    cell.querySelector('.animal').textContent = board[row][col];
+                }
+            }
+            
+            // Kiểm tra xem có khớp nào được tạo ra không
+            const matches = findMatches();
+            if (matches.length > 0) {
+                processMatches(matches);
+            } else {
+                // Kiểm tra xem có nước đi hợp lệ không
+                findPossibleMoves();
+            }
+        }
+
+        // Lấy phần tử HTML của ô
+        function getCellElement(row, col) {
+            return document.querySelector(`.cell[data-row="${row}"][data-col="${col}"]`);
+        }
+
+        // Cập nhật điểm số
+        function updateScore(points = 0) {
+            score += points;
+            document.getElementById('score').textContent = score;
+        }
+
+        // Cập nhật số lượt đi
+        function updateMoves(delta = 0) {
+            moves += delta;
+            document.getElementById('moves').textContent = moves;
+        }
+
+        // Cập nhật mục tiêu
+        function updateTarget() {
+            target = 500 * level;
+            document.getElementById('target').textContent = target;
+        }
+
+        // Cập nhật thông tin bảo vệ động vật
+        function updateAnimalFact() {
+            const factIndex = Math.floor(Math.random() * animalFacts.length);
+            document.getElementById('animal-fact').textContent = animalFacts[factIndex];
+        }
+
+        // Chơi lại trò chơi
+        function restartGame() {
+            score = 0;
+            moves = 20;
+            selectedCell = null;
+            isSwapping = false;
+            
+            // Ẩn thông báo
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('level-complete').style.display = 'none';
+            
+            // Tạo lại bảng
+            createBoard();
+            updateScore();
+            updateMoves();
+            updateAnimalFact();
+        }
+
+        // Cấp độ tiếp theo
+        function nextLevel() {
+            level++;
+            score = 0;
+            moves = 20 + level * 2;
+            selectedCell = null;
+            isSwapping = false;
+            
+            // Ẩn thông báo
+            document.getElementById('level-complete').style.display = 'none';
+            
+            // Cập nhật giao diện
+            updateTarget();
+            updateScore();
+            updateMoves();
+            updateAnimalFact();
+            
+            // Tạo lại bảng
+            createBoard();
+        }
+
+        // Hiển thị popup
+        function showPopup(text) {
+            const popup = document.getElementById('popup');
+            popup.textContent = text;
+            popup.style.opacity = 1;
+            
+            setTimeout(() => {
+                popup.style.opacity = 0;
+            }, 1000);
+        }
+
+        // Khởi tạo trò chơi khi trang được tải
+        window.addEventListener('load', initGame);
+    </script>
+</body>
+</html>

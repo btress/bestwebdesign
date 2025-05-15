@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Môi Trường và Động Vật</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+            color: #333;
+        }
+        header {
+            background-color: #1a6840;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .environment-section {
+            margin-bottom: 3rem;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .environment-header {
+            padding: 1rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .environment-content {
+            padding: 1rem;
+        }
+        .rainforest {
+            background-color: #2e8b57;
+        }
+        .ocean {
+            background-color: #1e90ff;
+        }
+        .savanna {
+            background-color: #daa520;
+        }
+        .arctic {
+            background-color: #87ceeb;
+        }
+        .animal-card {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .animal-header {
+            padding: 0.8rem;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .animal-content {
+            padding: 1rem;
+            background-color: #f9f9f9;
+        }
+        .species {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background-color: white;
+            border-radius: 6px;
+            border-left: 5px solid #ccc;
+        }
+        .endangered {
+            border-left: 5px solid #ff4545;
+        }
+        .vulnerable {
+            border-left: 5px solid #ffa500;
+        }
+        .near-threatened {
+            border-left: 5px solid #ffdc00;
+        }
+        .least-concern {
+            border-left: 5px solid #4caf50;
+        }
+        .status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+            color: white;
+        }
+        .status-cr {
+            background-color: #ff4545;
+        }
+        .status-en {
+            background-color: #ff8c00;
+        }
+        .status-vu {
+            background-color: #ffa500;
+        }
+        .status-nt {
+            background-color: #ffdc00;
+            color: #333;
+        }
+        .status-lc {
+            background-color: #4caf50;
+        }
+        footer {
+            background-color: #1a6840;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Môi Trường và Động Vật Trên Thế Giới</h1>
+        <p>Khám phá các loài động vật từ nhiều môi trường sống khác nhau và tình trạng bảo tồn của chúng</p>
+    </header>
+
+    <div class="container">
+        <!-- Rừng nhiệt đới -->
+        <div class="environment-section">
+            <div class="environment-header rainforest">Rừng Nhiệt Đới</div>
+            <div class="environment-content">
+                <p>Rừng nhiệt đới là một trong những hệ sinh thái đa dạng nhất trên Trái Đất, chiếm khoảng 6% diện tích bề mặt Trái Đất nhưng chứa hơn một nửa số loài sinh vật trên thế giới. Rừng nhiệt đới đang đối mặt với nguy cơ mất môi trường sống do nạn phá rừng và biến đổi khí hậu.</p>
+
+                <!-- Linh trưởng -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #8b4513;">Linh Trưởng</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Vượn Cao Vít (Nomascus nasutus) <span class="status status-cr">CỰC KỲ NGUY CẤP</span></h3>
+                            <p>Vượn cao vít là loài đặc hữu của Việt Nam và Trung Quốc, hiện chỉ còn khoảng 110 cá thể trong tự nhiên. Mất môi trường sống và săn bắt trái phép đã đẩy loài này đến bờ vực tuyệt chủng.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Voọc Mũi Hếch (Rhinopithecus avunculus) <span class="status status-cr">CỰC KỲ NGUY CẤP</span></h3>
+                            <p>Voọc mũi hếch là loài đặc hữu của Việt Nam, hiện chỉ còn khoảng 250 cá thể trong tự nhiên, sống rải rác ở một số khu vực thuộc các tỉnh miền núi phía Bắc.</p>
+                        </div>
+                        <div class="species vulnerable">
+                            <h3>Khỉ Đuôi Lợn (Macaca leonina) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Khỉ đuôi lợn phân bố ở Đông Nam Á, bao gồm Việt Nam. Loài này đang bị đe dọa do mất môi trường sống và săn bắt làm thực phẩm hoặc thuốc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mèo lớn -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #f39c12;">Mèo Lớn</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Hổ Đông Dương (Panthera tigris corbetti) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Hổ Đông Dương từng phổ biến ở Việt Nam và các nước Đông Nam Á, nhưng hiện nay số lượng trong tự nhiên ở Việt Nam gần như không còn do săn bắt và mất môi trường sống.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Báo Gấm (Neofelis nebulosa) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Báo gấm là loài mèo lớn sống ở các khu rừng nhiệt đới Đông Nam Á. Tại Việt Nam, loài này cực kỳ hiếm gặp và đang bị đe dọa nghiêm trọng.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chim -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #27ae60;">Chim</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Chim Hồng Hoàng (Buceros bicornis) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Chim hồng hoàng là một trong những loài chim lớn nhất của rừng nhiệt đới Đông Nam Á. Tại Việt Nam, số lượng của loài này đang suy giảm nghiêm trọng.</p>
+                        </div>
+                        <div class="species near-threatened">
+                            <h3>Vẹt Đầu Vàng (Amazona oratrix) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Vẹt đầu vàng đang bị đe dọa nghiêm trọng do buôn bán trái phép và mất môi trường sống. Số lượng trong tự nhiên đã giảm hơn 90% trong 50 năm qua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Đại dương -->
+        <div class="environment-section">
+            <div class="environment-header ocean">Đại Dương</div>
+            <div class="environment-content">
+                <p>Đại dương chiếm khoảng 71% bề mặt Trái Đất và là nơi sinh sống của hàng triệu loài sinh vật. Tuy nhiên, ô nhiễm, đánh bắt quá mức và biến đổi khí hậu đang gây ra những thách thức lớn cho sự sống còn của nhiều loài biển.</p>
+
+                <!-- Cá -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #3498db;">Cá</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Cá Mập Voi (Rhincodon typus) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Cá mập voi là loài cá lớn nhất trên thế giới, nhưng đang bị đe dọa do đánh bắt quá mức, ô nhiễm biển và va chạm với tàu thuyền.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Cá Mập Trắng Lớn (Carcharodon carcharias) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Cá mập trắng lớn đang bị đe dọa do đánh bắt quá mức, đánh bắt không chủ ý và giảm số lượng con mồi.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Cá Ngừ Vây Xanh (Thunnus thynnus) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Cá ngừ vây xanh là loài cá có giá trị kinh tế cao, nhưng đang bị đe dọa nghiêm trọng do đánh bắt quá mức.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Động vật có vú biển -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #2980b9;">Động Vật Có Vú Biển</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Cá Voi Lưng Gù (Megaptera novaeangliae) <span class="status status-lc">ÍT LO NGẠI</span></h3>
+                            <p>Cá voi lưng gù từng là đối tượng săn bắt mạnh mẽ, nhưng hiện nay số lượng đã phục hồi và đang ở mức ít lo ngại hơn.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Cá Voi Xanh (Balaenoptera musculus) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Cá voi xanh là động vật lớn nhất từng tồn tại trên Trái Đất, nhưng số lượng đã giảm hơn 90% do săn bắt trong quá khứ và hiện đang phục hồi chậm.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Bò Biển (Dugong dugon) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Bò biển là loài động vật có vú biển phân bố ở vùng biển ven bờ Ấn Độ Dương - Thái Bình Dương, bao gồm Việt Nam. Loài này đang bị đe dọa do đánh bắt không chủ ý và mất cỏ biển là thức ăn chính.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rùa biển -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #16a085;">Rùa Biển</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Rùa Da (Dermochelys coriacea) <span class="status status-cr">CỰC KỲ NGUY CẤP</span></h3>
+                            <p>Rùa da là loài rùa biển lớn nhất thế giới và cũng là một trong những loài bò sát lớn nhất. Chúng đang bị đe dọa nghiêm trọng do thu hoạch trứng, đánh bắt không chủ ý và ô nhiễm nhựa.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Rùa Xanh (Chelonia mydas) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Rùa xanh phân bố rộng rãi ở các vùng biển nhiệt đới và cận nhiệt đới, nhưng đang bị đe dọa do thu hoạch trứng, săn bắt và mất bãi đẻ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thảo nguyên -->
+        <div class="environment-section">
+            <div class="environment-header savanna">Thảo Nguyên</div>
+            <div class="environment-content">
+                <p>Thảo nguyên là vùng đất rộng lớn với cỏ và cây bụi thưa thớt, chủ yếu ở Châu Phi. Đây là môi trường sống của nhiều loài động vật lớn và đang bị đe dọa do phát triển nông nghiệp, săn bắt và biến đổi khí hậu.</p>
+
+                <!-- Họ mèo -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #e67e22;">Họ Mèo</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Sư Tử Châu Phi (Panthera leo) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Sư tử Châu Phi đã mất khoảng 90% khu vực phân bố lịch sử và tiếp tục giảm do mất môi trường sống, xung đột với con người và săn bắt trái phép.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Báo Đốm (Acinonyx jubatus) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Báo đốm là loài động vật có vú chạy nhanh nhất trên cạn, nhưng đang bị đe dọa do mất môi trường sống và giảm con mồi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Họ voi -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #7f8c8d;">Họ Voi</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Voi Châu Phi (Loxodonta africana) <span class="status status-en">NGUY CẤP</span></h3>
+                            <p>Voi Châu Phi là động vật trên cạn lớn nhất hiện nay, nhưng số lượng đang giảm nhanh chóng do săn trộm lấy ngà và mất môi trường sống.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Họ tê giác -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #95a5a6;">Họ Tê Giác</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Tê Giác Đen (Diceros bicornis) <span class="status status-cr">CỰC KỲ NGUY CẤP</span></h3>
+                            <p>Tê giác đen là một trong hai loài tê giác ở Châu Phi và đang bị đe dọa nghiêm trọng do săn trộm lấy sừng.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Tê Giác Trắng (Ceratotherium simum) <span class="status status-nt">GẦN BỊ ĐE DỌA</span></h3>
+                            <p>Tê giác trắng là loài tê giác lớn nhất và đã được bảo vệ tốt hơn so với tê giác đen, nhưng vẫn đối mặt với nguy cơ săn trộm.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vùng Bắc Cực -->
+        <div class="environment-section">
+            <div class="environment-header arctic">Vùng Bắc Cực</div>
+            <div class="environment-content">
+                <p>Vùng Bắc Cực là khu vực xung quanh Bắc Cực của Trái Đất, bao gồm Bắc Băng Dương đóng băng và các vùng đất lân cận. Biến đổi khí hậu và sự nóng lên toàn cầu đang làm thay đổi nhanh chóng môi trường này, đe dọa sự sống còn của nhiều loài.</p>
+
+                <!-- Động vật có vú -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #34495e;">Động Vật Có Vú</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Gấu Bắc Cực (Ursus maritimus) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Gấu Bắc Cực phụ thuộc vào băng biển để săn mồi và hiện đang bị đe dọa nghiêm trọng do băng biển tan chảy nhanh chóng vì biến đổi khí hậu.</p>
+                        </div>
+                        <div class="species least-concern">
+                            <h3>Chó Sói Bắc Cực (Canis lupus arctos) <span class="status status-lc">ÍT LO NGẠI</span></h3>
+                            <p>Chó sói Bắc Cực là một trong những loài thú lớn có khả năng thích nghi tốt với điều kiện khắc nghiệt của vùng cực.</p>
+                        </div>
+                        <div class="species least-concern">
+                            <h3>Tuần Lộc (Rangifer tarandus) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Tuần lộc hoặc caribou đang phải đối mặt với nhiều thách thức do biến đổi khí hậu làm thay đổi môi trường sống và nguồn thức ăn của chúng.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chim -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #2c3e50;">Chim</div>
+                    <div class="animal-content">
+                        <div class="species least-concern">
+                            <h3>Chim Cánh Cụt Hoàng Đế (Aptenodytes forsteri) <span class="status status-nt">GẦN BỊ ĐE DỌA</span></h3>
+                            <p>Chim cánh cụt Hoàng Đế sống ở Nam Cực, không phải Bắc Cực. Chúng đang phải đối mặt với thách thức do biến đổi khí hậu làm tan băng và giảm nguồn thức ăn.</p>
+                        </div>
+                        <div class="species least-concern">
+                            <h3>Hải Âu Bắc Cực (Larus hyperboreus) <span class="status status-lc">ÍT LO NGẠI</span></h3>
+                            <p>Hải âu Bắc Cực là loài chim lớn sống ở vùng cực và hiện có số lượng tương đối ổn định.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Động vật biển -->
+                <div class="animal-card">
+                    <div class="animal-header" style="background-color: #2980b9;">Động Vật Biển</div>
+                    <div class="animal-content">
+                        <div class="species endangered">
+                            <h3>Hải Mã (Odobenus rosmarus) <span class="status status-vu">SẮP NGUY CẤP</span></h3>
+                            <p>Hải mã phụ thuộc vào băng biển để nghỉ ngơi và sinh sản. Chúng đang bị đe dọa do băng biển tan chảy và săn bắt.</p>
+                        </div>
+                        <div class="species endangered">
+                            <h3>Hải Cẩu Vòng (Pusa hispida) <span class="status status-lc">ÍT LO NGẠI</span></h3>
+                            <p>Hải cẩu vòng là loài hải cẩu nhỏ sống ở vùng cực và là con mồi chính của gấu Bắc Cực. Chúng cũng đang bị ảnh hưởng bởi sự tan chảy băng biển.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 - Thông tin về Môi Trường và Động Vật | Dữ liệu cập nhật theo Sách Đỏ IUCN</p>
+        <p>CỰC KỲ NGUY CẤP (CR) - NGUY CẤP (EN) - SẮP NGUY CẤP (VU) - GẦN BỊ ĐE DỌA (NT) - ÍT LO NGẠI (LC)</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo Vệ Động Vật - Hãy Cùng Hành Động</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --secondary-color: #4caf50;
+            --accent-color: #ff9800;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --bg-light: #f5f5f5;
+            --bg-dark: #263238;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            fill: var(--text-light);
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.7)), url('/api/placeholder/800/450') center/cover no-repeat;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-icon {
+            background-color: var(--accent-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .video-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .video-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .video-tag {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 20px;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); }
+            to { transform: scale(1); }
+        }
+
+        .video-player-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background-color: black;
+        }
+
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .close-modal svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .modal-info {
+            padding: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .modal-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .video-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .video-control-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .video-control-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .video-control-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background-color: white;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            border-radius: 50%;
+        }
+
+        .info-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary-color);
+        }
+
+        .info-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn.primary {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        .cta-btn.secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn.primary:hover {
+            background-color: #e68a00;
+        }
+
+        .cta-btn.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--text-light);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .videos-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .video-modal {
+                padding: 10px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 30px auto;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .dark-mode {
+            --primary-color: #388e3c;
+            --secondary-color: #66bb6a;
+            --bg-light: #1c1c1c;
+            --bg-dark: #121212;
+            --text-dark: #f5f5f5;
+        }
+
+        .dark-mode .video-card,
+        .dark-mode .info-card {
+            background-color: #2d2d2d;
+            color: var(--text-light);
+        }
+
+        .dark-mode .info-card h3 {
+            color: var(--secondary-color);
+        }
+
+        .dark-mode .info-card p,
+        .dark-mode .video-info p {
+            color: #bbb;
+        }
+
+        .dark-mode .video-tag {
+            background-color: #3d3d3d;
+            color: var(--secondary-color);
+        }
+
+        .dark-mode .category-btn {
+            background-color: #2d2d2d;
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg"></div>
+        <div class="header-content">
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6M11,10V14H13V10H11M11,16V18H13V16H11Z"></path>
+                </svg>
+                <h1>Bảo Vệ Động Vật</h1>
+            </div>
+            <p>Vì một thế giới nhân đạo và công bằng cho tất cả sinh vật.</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Trang Chủ</a></li>
+            <li><a href="#videos">Video</a></li>
+            <li><a href="#info">Thông Tin</a></li>
+            <li><a href="#action">Hành Động</a></li>
+            <li><a href="#about">Về Chúng Tôi</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h2>Hãy Cùng Bảo Vệ Loài Vật</h2>
+                <p>Mỗi sinh vật đều có quyền được sống trong môi trường an toàn, khỏe mạnh và tự nhiên. Hãy tham gia cùng chúng tôi trong sứ mệnh bảo vệ các loài động vật khỏi sự tàn nhẫn, bóc lột và tuyệt chủng.</p>
+                <a href="#videos" class="btn pulse">Xem Video Ngay</a>
+            </div>
+        </section>
+
+        <section id="videos">
+            <h2 class="section-title">Video Giáo Dục</h2>
+            
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Tất Cả</button>
+                <button class="category-btn" data-category="wildlife">Động Vật Hoang Dã</button>
+                <button class="category-btn" data-category="pets">Thú Cưng</button>
+                <button class="category-btn" data-category="farm">Động Vật Nông Trại</button>
+                <button class="category-btn" data-category="marine">Sinh Vật Biển</button>
+            </div>
+
+            <div class="videos-container">
+
+                <!-- Video 1 -->
+                <div class="video-card" data-category="wildlife">
+                    <div class="video-thumbnail" data-video-id="video1">
+                        <img src="/api/placeholder/640/360" alt="Bảo vệ loài hổ">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Cứu Lấy Loài Hổ - Hành Động Ngay Bây Giờ</h3>
+                        <p>Tìm hiểu về tình trạng nguy cấp của loài hổ và những nỗ lực bảo tồn toàn cầu.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Động vật hoang dã</span>
+                            <span class="video-tag">Bảo tồn</span>
+                            <span class="video-tag">Loài nguy cấp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card" data-category="pets">
+                    <div class="video-thumbnail" data-video-id="video2">
+                        <img src="/api/placeholder/640/360" alt="Chăm sóc thú cưng đúng cách">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Chăm Sóc Thú Cưng Đúng Cách</h3>
+                        <p>Hướng dẫn chăm sóc thú cưng nhân đạo và trách nhiệm cho mọi gia đình.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Thú cưng</span>
+                            <span class="video-tag">Chăm sóc</span>
+                            <span class="video-tag">Gia đình</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card" data-category="farm">
+                    <div class="video-thumbnail" data-video-id="video3">
+                        <img src="/api/placeholder/640/360" alt="Chăn nuôi nhân đạo">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Chăn Nuôi Nhân Đạo - Xu Hướng Tương Lai</h3>
+                        <p>Khám phá các phương pháp chăn nuôi nhân đạo và lợi ích cho môi trường.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Nông trại</span>
+                            <span class="video-tag">Chăn nuôi</span>
+                            <span class="video-tag">Bền vững</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card" data-category="marine">
+                    <div class="video-thumbnail" data-video-id="video4">
+                        <img src="/api/placeholder/640/360" alt="Bảo vệ đại dương">
+                        <div class="play-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Đại Dương Xanh - Bảo Vệ Sinh Vật Biển</h3>
+                        <p>Tác động của rác thải nhựa và biện pháp bảo vệ sinh vật biển trong thời đại hiện nay.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Đại dương</span>
+                            <span class="video-tag">Ô nhiễm</span>
+                            <span class="video-tag">Bảo tồn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
