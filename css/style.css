@@ -1,8 +1,8 @@
 :root {
     --primary-color: #2e7d32;
     --secondary-color: #43a047;
-    --dark-color: #1b5e20;
-    --light-color: #f1f8e9;
+    --dark-color: #1e631e;
+    --light-color: #2f823a;
     --accent-color: #ff8f00;
     --navbar-default-color : rgb(11, 83, 6);
 }
@@ -12,6 +12,9 @@
     background-color: #23272A !important;
 }
 
+p {
+    color: #f1f8e9 !important;
+}
 
 .reveal {
     opacity: 0;
@@ -124,7 +127,14 @@ body {
     position: relative;
     display: inline-block;
     color: var(--dark-color);
+/* 
+    text-shadow:
+            0 0 10px #fff,
+            0 0 20px #1b5e20,
+            0 0 30px #1b5e20,
+            0 0 40px #1b5e20; */
 }
+
 
 .section-title::after {
     content: '';
@@ -133,7 +143,7 @@ body {
     bottom: -10px;
     width: 50px;
     height: 3px;
-    background-color: var(--primary-color);
+    background-color: white;
 }
 
 .card {
@@ -156,13 +166,14 @@ body {
 }
 
 .card-body {
+    background-color: #373737;
     padding: 1.5rem;
 }
 
 .card-title {
     font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--dark-color);
+    color: white;
 }
 
 .badge {
@@ -182,7 +193,7 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    background-color: white;
+    background-color: #373737;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
@@ -217,7 +228,7 @@ body {
 .conservation-item {
     padding: 1.5rem;
     border-left: 3px solid var(--primary-color);
-    background-color: white;
+    background-color: #373737;
     border-radius: 0 12px 12px 0;
     margin-bottom: 1.5rem;
     position: relative;

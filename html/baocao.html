@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Vi Phạm | Bảo Vệ Động Vật Hoang Dã Việt Nam</title>
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #A5D6A7;
+            --accent-color: #FFC107;
+            --text-color: #212121;
+            --light-bg: #F5F5F5;
+            --white: #FFFFFF;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .intro {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .location-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .location-group .form-group {
+            flex: 1;
+        }
+        
+        .image-upload {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .upload-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        
+        .preview-item {
+            width: 100px;
+            height: 100px;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .preview-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        
+        .current-location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #F0F9FF;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        button {
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #1B5E20;
+        }
+        
+        .btn-location {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 10px 15px;
+        }
+        
+        .btn-location:hover {
+            background-color: #FFB300;
+        }
+        
+        .emergency-note {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #FFEBEE;
+            border-left: 4px solid #D32F2F;
+            border-radius: 4px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #757575;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 15px;
+            }
+            
+            .location-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div class="logo-icon">🌿</div>
+            <h1>Bảo Vệ Động Vật Hoang Dã Việt Nam</h1>
+        </div>
+        <p>Cùng nhau bảo vệ các loài động vật quý hiếm và hệ sinh thái tự nhiên</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>Báo Cáo Vi Phạm</h2>
+            <p>Cảm ơn bạn đã giúp chúng tôi bảo vệ động vật hoang dã. Mỗi báo cáo đều quan trọng và có thể cứu sống nhiều loài động vật đang bị đe dọa. Thông tin của bạn sẽ được bảo mật và chỉ được sử dụng để xử lý vi phạm.</p>
+        </div>
+
+        <form id="violationReportForm">
+            <div class="form-group">
+                <label for="reporterName">Họ và tên (tùy chọn):</label>
+                <input type="text" id="reporterName" name="reporterName" placeholder="Nhập họ tên của bạn">
+            </div>
+
+            <div class="form-group">
+                <label for="contactInfo">Thông tin liên hệ (tùy chọn):</label>
+                <input type="text" id="contactInfo" name="contactInfo" placeholder="Email hoặc số điện thoại để chúng tôi có thể liên hệ khi cần">
+            </div>
+
+            <div class="form-group">
+                <label for="violationType">Loại vi phạm: <span style="color: red">*</span></label>
+                <select id="violationType" name="violationType" required>
+                    <option value="">-- Chọn loại vi phạm --</option>
+                    <option value="hunting">Săn bắt trái phép</option>
+                    <option value="trading">Buôn bán động vật hoang dã</option>
+                    <option value="captivity">Nuôi nhốt trái phép</option>
+                    <option value="transport">Vận chuyển trái phép</option>
+                    <option value="abuse">Ngược đãi động vật</option>
+                    <option value="other">Vi phạm khác</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="animalType">Loài động vật liên quan: <span style="color: red">*</span></label>
+                <input type="text" id="animalType" name="animalType" placeholder="Ví dụ: Hổ, Voi, Tê tê, Rùa..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="incidentDate">Thời gian xảy ra: <span style="color: red">*</span></label>
+                <input type="datetime-local" id="incidentDate" name="incidentDate" required>
+            </div>
+
+            <div class="form-group">
+                <label>Địa điểm xảy ra: <span style="color: red">*</span></label>
+                <div class="location-group">
+                    <div class="form-group">
+                        <input type="text" id="incidentLocation" name="incidentLocation" placeholder="Địa chỉ cụ thể nơi xảy ra vi phạm" required>
+                    </div>
+                </div>
+                
+                <div class="current-location">
+                    <button type="button" class="btn-location" id="getLocationBtn">
+                        📍 Sử dụng vị trí hiện tại
+                    </button>
+                    <span id="locationStatus">Chưa xác định vị trí</span>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Mô tả chi tiết vụ việc: <span style="color: red">*</span></label>
+                <textarea id="description" name="description" placeholder="Mô tả chi tiết những gì bạn chứng kiến, số lượng động vật, tình trạng của chúng, đặc điểm nhận dạng của người vi phạm, phương tiện sử dụng..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="imageUpload">Hình ảnh đính kèm (nếu có):</label>
+                <div class="image-upload">
+                    <input type="file" id="imageUpload" name="images[]" accept="image/*" multiple>
+                    <small>Có thể tải lên nhiều hình ảnh. Kích thước tối đa: 10MB/ảnh.</small>
+                    
+                    <div class="upload-preview">
+                        <div class="preview-item">
+                            <span>Hình ảnh 1</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Hình ảnh 2</span>
+                        </div>
+                        <div class="preview-item">
+                            <span>Hình ảnh 3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalInfo">Thông tin bổ sung:</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Các thông tin khác bạn muốn chia sẻ..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submitReport">Gửi Báo Cáo</button>
+            </div>
+        </form>
+
+        <div class="emergency-note">
+            <h3>⚠️ Trong trường hợp khẩn cấp</h3>
+            <p>Nếu bạn đang chứng kiến hành vi vi phạm đang diễn ra và cần can thiệp ngay lập tức, vui lòng gọi:</p>
+            <p><strong>Đường dây nóng: 1800-1522</strong> (miễn phí, hoạt động 24/7)</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Trung tâm Bảo vệ Động vật Hoang dã Việt Nam | Đường dây nóng: 1800-1522</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Văn Linh, Quận 7, TP. Hồ Chí Minh</p>
+        <p>Email: hotro@baovethiennhien.vn | Website: www.baovethiennhien.vn</p>
+    </footer>
+
+    <script>
+        // Xử lý lấy vị trí hiện tại
+        document.getElementById('getLocationBtn').addEventListener('click', function() {
+            const statusElement = document.getElementById('locationStatus');
+            statusElement.textContent = "Đang xác định vị trí...";
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        
+                        document.getElementById('latitude').value = lat;
+                        document.getElementById('longitude').value = lng;
+                        statusElement.textContent = `Đã xác định: ${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                    },
+                    function(error) {
+                        switch(error.code) {
+                            case error.PERMISSION_DENIED:
+                                statusElement.textContent = "Bạn đã từ chối quyền truy cập vị trí";
+                                break;
+                            case error.POSITION_UNAVAILABLE:
+                                statusElement.textContent = "Không thể xác định vị trí";
+                                break;
+                            case error.TIMEOUT:
+                                statusElement.textContent = "Quá thời gian xác định vị trí";
+                                break;
+                            default:
+                                statusElement.textContent = "Lỗi không xác định";
+                                break;
+                        }
+                    }
+                );
+            } else {
+                statusElement.textContent = "Trình duyệt không hỗ trợ định vị";
+            }
+        });
+
+        // Xử lý xem trước ảnh
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const previewContainer = document.querySelector('.upload-preview');
+            
+            // Xóa các preview cũ
+            previewContainer.innerHTML = '';
+            
+            // Thêm các preview mới
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                
+                if (!file.type.startsWith('image/')) continue;
+                
+                const reader = new FileReader();
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                
+                reader.onload = function (e) {
+                    previewItem.innerHTML = `<img src="${e.target.result}" alt="Hình ảnh ${i+1}">`;
+                }
+                
+                reader.readAsDataURL(file);
+                previewContainer.appendChild(previewItem);
+            }
+        });
+
+        // Xử lý submit form
+        document.getElementById('violationReportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Kiểm tra các trường bắt buộc
+            const requiredFields = ['violationType', 'animalType', 'incidentDate', 'incidentLocation', 'description'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value.trim()) {
+                    isValid = false;
+                    element.style.borderColor = 'red';
+                } else {
+                    element.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Vui lòng điền đầy đủ thông tin ở các mục có dấu (*)');
+                return;
+            }
+            
+            // Trong thực tế, đây là nơi gửi dữ liệu đến máy chủ
+            // Ví dụ: dùng fetch API để gửi form data
+
+            // Mô phỏng việc gửi báo cáo thành công
+            setTimeout(() => {
+                alert('Cảm ơn bạn! Báo cáo của bạn đã được gửi thành công. Chúng tôi sẽ xem xét và xử lý trong thời gian sớm nhất.');
+                // Đặt lại form
+                this.reset();
+                document.getElementById('locationStatus').textContent = "Chưa xác định vị trí";
+                document.querySelector('.upload-preview').innerHTML = `
+                    <div class="preview-item"><span>Hình ảnh 1</span></div>
+                    <div class="preview-item"><span>Hình ảnh 2</span></div>
+                    <div class="preview-item"><span>Hình ảnh 3</span></div>
+                `;
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

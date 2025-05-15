@@ -192,28 +192,38 @@ const displacementSlider = function (opts) {
 
         });
 
-        let i = 1;
-        let override = false;
-
-        // Gán sự kiện click cho các nút slide
-        pagButtons.forEach((el) => {
-            el.addEventListener('click', () => {
-                const clickedSlide = parseInt(el.dataset.slide);
-                i = (clickedSlide + 1) % pagButtons.length; // tiếp tục từ slide kế tiếp
-                override = true; // đánh dấu là vừa click tay
-                el.click(); // hiện slide vừa click
-                console.log("User clicked slide:", clickedSlide);
-            });
-        });
-
+        var i = 1;
         setInterval(() => {
-            if (!override) {
-                pagButtons[i].click(); // auto chạy
-                i = (i + 1) % pagButtons.length;
+            pagButtons[i].click();
+            if(i === pagButtons.length-1) {
+                i = 0;
             } else {
-                override = false; // bỏ qua 1 lần sau khi click, rồi tiếp tục auto
+                ++i;
             }
-        }, 1100);
+        }, 2200);
+
+        // let i = 1;
+        // let override = false;
+
+        // // Gán sự kiện click cho các nút slide
+        // pagButtons.forEach((el) => {
+        //     el.addEventListener('click', () => {
+        //         const clickedSlide = parseInt(el.dataset.slide);
+        //         i = (clickedSlide + 1) % pagButtons.length; // tiếp tục từ slide kế tiếp
+        //         override = true; // đánh dấu là vừa click tay
+        //         el.click(); // hiện slide vừa click
+        //         console.log("User clicked slide:", clickedSlide);
+        //     });
+        // });
+
+        // setInterval(() => {
+        //     if (!override) {
+        //         pagButtons[i].click(); // auto chạy
+        //         i = (i + 1) % pagButtons.length;
+        //     } else {
+        //         override = false; // bỏ qua 1 lần sau khi click, rồi tiếp tục auto
+        //     }
+        // }, 1100);
 
 
     };
