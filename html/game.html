@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,7 +130,8 @@
             background-color: #388e3c;
         }
 
-        .start-screen, .end-screen {
+        .start-screen,
+        .end-screen {
             text-align: center;
             padding: 30px;
         }
@@ -205,12 +207,14 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Start Screen -->
         <div class="start-screen" id="startScreen">
             <h1>Trò Chơi Bảo Vệ Động Vật</h1>
-            <p>Hãy giúp các loài động vật đang bị đe dọa tuyệt chủng bằng cách chọn đúng hệ sinh thái phù hợp với chúng!</p>
+            <p>Hãy giúp các loài động vật đang bị đe dọa tuyệt chủng bằng cách chọn đúng hệ sinh thái phù hợp với chúng!
+            </p>
             <p>Trả lời đúng 10 câu hỏi để đạt 100 điểm.</p>
             <button class="btn-start" id="btnStart">Bắt Đầu</button>
         </div>
@@ -273,106 +277,106 @@
                     "https://www.vista.gov.vn/vn-uploads/news/2023/8-2023/15-8-2023/0.jpg", // Sa mạc
                     "https://media.istockphoto.com/id/1293479700/vi/anh/prairie.jpg?s=612x612&w=0&k=20&c=rhZfBoi2CyjG3xINluRadEITqLivOmjrG6-Q-yqEnig="  // Đồng cỏ
                 ],
-                info: "Hổ Sumatra (Panthera tigris sumatrae) là một trong những loài hổ nhỏ nhất và cũng là loài hổ đang bị đe dọa nghiêm trọng với chỉ còn khoảng 400-600 cá thể trong tự nhiên. Chúng sinh sống trong các khu rừng nhiệt đới ở đảo Sumatra, Indonesia. Nguyên nhân chính dẫn đến sự suy giảm số lượng của chúng là mất môi trường sống do nạn phá rừng, săn trộm và buôn bán bất hợp pháp."
+                info: "Voọc chà vá chân nâu thường xuất hiện trong các khu rừng thường xanh mưa mùa nhiệt đới, rừng nửa rụng lá, đôi khi là rừng thứ sinh thường xanh, rừng núi đá vôi, hoặc rừng hỗn giao cây lá rộng và cây lá kim. Chúng thường chỉ sinh sống, di chuyển trên các tầng tán cây trong rừng nhưng thỉnh thoảng chúng vẫn đi xuống đất để uống nước hoặc ăn đất để bổ sung thêm chất khoáng. Xét theo đai độ cao phân bố so với mực nước biển, loài này thường được ghi nhận ở độ cao trên 1,300m. Tuy nhiên, tại bán đảo Sơn Trà, có vài gia đình nhà Voọc chà vá chân nâu di chuyển xuống sát những tảng đá ở mép biển để tìm kiếm thức ăn. Điều đó cho thấy, ở mỗi điều kiện sinh sống khác nhau, tuy cùng một loài nhưng chúng sẽ có các cách thích nghi với môi trường sống khác nhau và hình thành những tập tính khác nhau. Sự phân bố và tồn tại của các nhóm linh trưởng nói chung và Voọc chà vá chân nâu nói riêng là những dấu hiệu chỉ thị cho chất lượng rừng tốt và ít bị tác động."
             },
             {
-                name: "Gấu Trúc",
-                image: "/api/placeholder/300/300",
+                name: "Bò Tot",
+                image: "../image/anh/botot.png",
                 correctEcosystem: 1,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Rừng ôn đới
-                    "/api/placeholder/250/120", // Rừng tre
-                    "/api/placeholder/250/120"  // Sa mạc
+                    "../image/anh/bototwr.png",
+                    "../image/anh/BototAC.png",
+                    "../image/anh/bototwr2.png"
                 ],
-                info: "Gấu trúc (Ailuropoda melanoleuca) là loài vật biểu tượng của Trung Quốc và cũng là biểu tượng của nỗ lực bảo tồn động vật toàn cầu. Chúng sinh sống trong các khu rừng tre ở vùng núi trung tâm Trung Quốc. Chế độ ăn của gấu trúc gồm 99% là tre. Hiện nay, số lượng gấu trúc trong tự nhiên đã tăng lên khoảng 1,800 cá thể nhờ các nỗ lực bảo tồn, nhưng vẫn được xếp vào danh sách các loài dễ bị tổn thương."
+                info: "Bò Tót (Bos gaurus), hay còn gọi là bò rừng Mã Lai, là một loài động vật có kích thước lớn, sống chủ yếu ở vùng đồi của Ấn Độ và Đông Nam Á. Ở Việt Nam, bò tót đang đối mặt với nguy cơ tuyệt chủng, chỉ còn khoảng 300 con phân bố tại các vườn quốc gia ở Lào Cai, Kon Tum, Lâm Đồng. Môi trường sống của chúng đang bị tàn phá và chúng thường xuyên bị săn bắn trái phép. Đây là loài bò được liệt vào Sách Đỏ Việt Nam và đã được Chính phủ cấm săn bắn, bẫy bắt và buôn bán để bảo vệ loài này."
             },
             {
-                name: "Voi Châu Phi",
-                image: "/api/placeholder/300/300",
+                name: "Cá sấu hoa cà",
+                image: "../image/anh/casauhoaca.png",
                 correctEcosystem: 2,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Rừng nhiệt đới
-                    "/api/placeholder/250/120", // Rừng tre
-                    "/api/placeholder/250/120"  // Đồng cỏ Savanna
+                    "../image/anh/casauhoacaWR.png", // Rừng tre
+                    "../image/anh/casauhoacaWR2.png",  // Đồng cỏ Savanna
+                    "../image/anh/casauhoacaAC.png" // Rừng nhiệt đới
                 ],
-                info: "Voi châu Phi (Loxodonta africana) là loài động vật có vú trên cạn lớn nhất trên thế giới. Chúng sinh sống tại các đồng cỏ Savanna, rừng thưa và sa mạc ở châu Phi. Mặc dù được bảo vệ, số lượng voi vẫn giảm mạnh do nạn săn trộm lấy ngà và mất môi trường sống. Voi đóng vai trò quan trọng trong hệ sinh thái, giúp duy trì cấu trúc thảo nguyên và phân tán hạt giống."
+                info: "Cá sấu hoa cà là loài bò sát cỡ lớn, khác biệt với cá sấu xiêm, có chiều dài cơ thể tới 6m. Đầu mõm dài, không có tấm sau chẩm. Đuôi cao, to và khỏe, phía trên có 4 gờ. Chân sau có màng bơi nối giữa các ngón. Thân mình được phủ tấm sừng, những tấm sừng trên lưng cách nhau bởi màng da. Cá sấu hoa cà là loài động vật thông minh và có hành vi phức tạp, thường tập trung nhiều ở cửa sông và ăn đa dạng thức ăn. Hiện nay, chúng đang đối mặt với tình trạng nguy cấp do săn bắt và mất môi trường sống. Cá sấu hoa cà là một trong những loài động vật quý hiếm và cần được bảo vệ."
             },
             {
-                name: "Rùa Biển Hawksbill",
-                image: "/api/placeholder/300/300",
+                name: "Khỉ đột Núi",
+                image: "../image/anh/khidotnui.png",
                 correctEcosystem: 0,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Rạn san hô
-                    "/api/placeholder/250/120", // Hồ nước ngọt
-                    "/api/placeholder/250/120"  // Đầm lầy
+                    "../image/anh/khidotnuiACpng.png", // Rạn san hô
+                    "../image/anh/khidotnuiWR.png", // Hồ nước ngọt
+                    "../image/anh/khidotnuiWR2.png"  // Đầm lầy
                 ],
-                info: "Rùa biển Hawksbill (Eretmochelys imbricata) là loài rùa biển nguy cấp sống trong các vùng biển nhiệt đới trên toàn thế giới, đặc biệt là quanh các rạn san hô. Chúng nổi tiếng với chiếc mai đẹp và hình dáng mỏ đặc trưng. Rùa Hawksbill đóng vai trò quan trọng trong việc duy trì sức khỏe của các rạn san hô bằng cách ăn các loài bọt biển xâm lấn. Hiện chỉ còn khoảng 20,000 con cái sinh sản trên toàn thế giới."
+                info: "Khỉ đột núi Giống loài này đã từng được dự đoán sẽ biến mất trên Trái Đất chúng ta vào cuối thế kỷ 20.Hiện nay số lượng cá thể loại khỉ đột núi này chỉ còn khoảng dưới 900, một mức khá thấp. Các nhà hoạt động vì động vật đang ngày càng cố gắng để bảo vệ giống loài này khỏi sự de dọa từ con người.Theo Tổ chức Động vật Hoang dã Châu Phi, mối đe dọa lớn nhất đối với khỉ đột núi phương đông này chính là do chiến tranh (phần lớn chính là sự xung đột ở Cộng hòa Công-gô), sự xâm lấn của con người và thoái hóa rừng."
             },
             {
-                name: "Báo Tuyết",
-                image: "/api/placeholder/300/300",
+                name: "Cá Voi Xanh",
+                image: "../image/anh/cavoi.png",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "../image/anh/cavoiAC.png", // Rạn san hô
+                    "../image/anh/cavoiWr.png", // Hồ nước ngọt
+                    "../image/anh/cavoiWr2.png"  // Đầm lầy
+                ],
+                info: "Cá voi xanh bị săn bắn đến mức chúng gần như tuyệt chủng. Là loài động vật lớn nhất trên trái đất, chiều dài cơ thể của chúng có thể lên tới 27 m và trọng lượng có thể đến 120 tấn.Tiếng gọi của cá voi xanh phát ra âm thanh có tần số cao hơn bất kì loài động vật nào khác trên Trái đất. Mặc dù việc săn bắn cá voi xanh đã bị cấm từ năm 1966 nhưng sự phục hồi của loài động vật biển có vú tuyệt đẹp này đến nay vẫn chỉ diễn ra một cách rất chậm chạp."
+            },
+            {
+                name: "Gấu Trúc Khổng Lồ",
+                image: "../image/anh/Gatruc.png",
+                correctEcosystem: 2,
+                ecosystems: [
+                    "../image/anh/GautrrucWR.png", // Sông ngòi
+                    "../image/anh/GautrrucWR2.png",  // Vịnh biển nông
+                    "../image/anh/GatrucAC.png" // Đại dương sâu
+                ],
+                info: "Gấu trúc khổng lồ được nhiều người yêu thích bởi nó có dáng vẻ dễ thương và phong thái nhẹ nhàng. Là một biểu tượng cần bảo tồn nhưng môi trường sống của gấu trúc khổng lồ đang có nguy cơ bị đe dọa bởi phần lớn diện tích rừng tự nhiên của Trung Quốc được phát quang để làm nông nghiệp, khai thác củi, gỗ để đáp ứng nhu cầu của lực lượng đông đảo dân chúng."
+            },
+            {
+                name: "Hổ",
+                image: "../image/anh/ho.png",
+                correctEcosystem: 0,
+                ecosystems: [
+                    "../image/anh/hoAC.png", // Rừng mưa nhiệt đới
+                    "../image/anh/hoWr.png", // Đồng cỏ
+                    "../image/anh/hoWR2.png"  // Đầm lầy
+                ],
+                info: "Hổ là một trong những biểu tượng điển hình nhất cần được bảo tồn hiện nay. Tuy nhiên, chúng đang phải đối mặt với mối đe dọa nghiêm trọng của sự tuyệt chủng bởi chúng đang mất dần môi trường sống và bị săn bắn một cách bất hợp pháp."
+            },
+            {
+                name: "Hươu vàng",
+                image: "../image/anh/huuvang.png",
                 correctEcosystem: 1,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Rừng nhiệt đới
-                    "/api/placeholder/250/120", // Vùng núi cao
-                    "/api/placeholder/250/120"  // Đồng cỏ
+                    "../image/anh/huuvangWR.png", // Rừng nhiệt đới ẩm
+                    "../image/anh/huuvangAc.png", // Sa mạc
+                    "../image/anh/huuvangWR2.png"  // Đồng cỏ
                 ],
-                info: "Báo tuyết (Panthera uncia) là loài mèo lớn sống ở các vùng núi cao của Trung Á, Himalaya và Tây Tạng. Chúng được biết đến với bộ lông dày, đuôi dài và khả năng thích nghi tuyệt vời với khí hậu lạnh và địa hình khó khăn. Số lượng báo tuyết trong tự nhiên ước tính chỉ còn 4,000-6,500 cá thể và đang giảm do săn bắn trộm, mất môi trường sống và giảm con mồi tự nhiên."
+                info: "Hươu vàng, một loài động vật có vú thuộc họ Hươu nai, được mô tả bởi Zimmermann vào năm 1780. Hươu vàng sinh sống chủ yếu ở Tây Nguyên, trong các khu vực đầm lầy của Kontum, Đắk Lắk, Lâm Đồng và Đồng Nai. Dưới tình trạng nguy cơ diệt chủng, chỉ còn vài trăm con sống ở Việt Nam và được liệt kê trong Sách đỏ Việt Nam. Chúng có kích thước trung bình, vóc dáng chậm chạp và nặng nề. Bộ lông mềm mại màu vàng hay nâu đậm tạo nên vẻ đẹp của loài hươu vàng. Hiện chỉ còn vài trăm cá thể hươu vàng ở Việt Nam, và có nguy cơ tuyệt chủng."
             },
             {
-                name: "Cá Heo Vaquita",
-                image: "/api/placeholder/300/300",
+                name: "Rùa Hồ Gươm",
+                image: "../image/anh/Rua.png",
                 correctEcosystem: 2,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Đại dương sâu
-                    "/api/placeholder/250/120", // Sông ngòi
-                    "/api/placeholder/250/120"  // Vịnh biển nông
+                    "../image/anh/Ruawr.png", // Đồng cỏ
+                    "../image/anh/ruawr2.png",  // Vùng Bắc Cực
+                    "../image/anh/ruaac.png" // Rừng ôn đới
                 ],
-                info: "Cá heo Vaquita (Phocoena sinus) là loài cá heo nhỏ nhất thế giới và cũng là loài động vật biển có nguy cơ tuyệt chủng cao nhất. Chúng chỉ sống ở phía bắc Vịnh California, Mexico. Hiện nay, số lượng cá thể còn lại ước tính chỉ còn dưới 10 con. Nguyên nhân chính gây ra sự suy giảm này là việc chúng vô tình bị mắc vào lưới đánh cá bất hợp pháp."
+                info: "Rùa Hồ Gươm có đầu nhỏ, rộng, mõm ngắn, và vòi rất ngắn. Lưng màu vàng lục với những đốm vàng, yếm bụng màu trắng nhạt. Mai rùa mềm, không cứng như loài rùa thông thường. Một số thông tin lưu giữ về cá thể rùa hồ Gươm chỉ ra kích thước lớn, với cá thể nặng 250 kg và chiều dài 2,1 m. Hiện tại, Rùa Hồ Gươm được coi là động vật quý hiếm ở mức đặc biệt nguy cấp, cần được bảo vệ."
             },
             {
-                name: "Đười ươi Borneo",
-                image: "/api/placeholder/300/300",
+                name: "Voi Việt Nam",
+                image: "../image/anh/voi.png",
                 correctEcosystem: 0,
                 ecosystems: [
-                    "/api/placeholder/250/120", // Rừng mưa nhiệt đới
-                    "/api/placeholder/250/120", // Đồng cỏ
-                    "/api/placeholder/250/120"  // Đầm lầy
+                    "../image/anh/voiAc.png", // Rừng Đại Tây Dương
+                    "../image/anh/voiWR.png", // Sa mạc
+                    "../image/anh/voiwr2.png"  // Đồng cỏ
                 ],
-                info: "Đười ươi Borneo (Pongo pygmaeus) là loài linh trưởng lớn sống trên các cây trong rừng mưa nhiệt đới ở đảo Borneo. Chúng được biết đến là loài vượn thông minh, có khả năng sử dụng công cụ và xây tổ. Số lượng đười ươi Borneo đã giảm hơn 50% trong 60 năm qua, chủ yếu do mất môi trường sống từ việc phá rừng cho các đồn điền dầu cọ, khai thác gỗ và cháy rừng."
-            },
-            {
-                name: "Tê giác Javan",
-                image: "/api/placeholder/300/300",
-                correctEcosystem: 1,
-                ecosystems: [
-                    "/api/placeholder/250/120", // Sa mạc
-                    "/api/placeholder/250/120", // Rừng nhiệt đới ẩm
-                    "/api/placeholder/250/120"  // Đồng cỏ
-                ],
-                info: "Tê giác Javan (Rhinoceros sondaicus) là một trong những loài động vật có vú nguy cấp nhất thế giới với ước tính chỉ còn khoảng 74 cá thể, chỉ sống trong Vườn Quốc gia Ujung Kulon ở Indonesia. Chúng sinh sống trong các khu rừng nhiệt đới ẩm và đầm lầy. Nguyên nhân chính dẫn đến sự tuyệt chủng của chúng là săn bắn để lấy sừng và mất môi trường sống."
-            },
-            {
-                name: "Cáo Tuyết Bắc Cực",
-                image: "/api/placeholder/300/300",
-                correctEcosystem: 2,
-                ecosystems: [
-                    "/api/placeholder/250/120", // Rừng ôn đới
-                    "/api/placeholder/250/120", // Đồng cỏ
-                    "/api/placeholder/250/120"  // Vùng Bắc Cực
-                ],
-                info: "Cáo tuyết Bắc Cực (Vulpes lagopus) là loài cáo nhỏ sống ở các vùng đất lạnh giá của Bắc Cực. Chúng có bộ lông dày màu trắng vào mùa đông và chuyển sang màu nâu hoặc xám vào mùa hè để ngụy trang. Mặc dù hiện không bị đe dọa tuyệt chủng, nhưng biến đổi khí hậu đang ảnh hưởng nghiêm trọng đến môi trường sống của chúng, và sự mở rộng về phía bắc của cáo đỏ đang tạo ra sự cạnh tranh về thức ăn và nơi ở."
-            },
-            {
-                name: "Khỉ sư tử vàng",
-                image: "/api/placeholder/300/300",
-                correctEcosystem: 0,
-                ecosystems: [
-                    "/api/placeholder/250/120", // Rừng Đại Tây Dương
-                    "/api/placeholder/250/120", // Sa mạc
-                    "/api/placeholder/250/120"  // Đồng cỏ
-                ],
-                info: "Khỉ sư tử vàng (Leontopithecus rosalia) là loài linh trưởng nhỏ, nặng chỉ khoảng 600g và có bộ lông màu vàng rực rỡ. Chúng chỉ sống trong khu vực nhỏ của rừng Đại Tây Dương ở đông nam Brazil. Trước đây, loài này gần như tuyệt chủng với chỉ 200 cá thể còn sót lại, nhưng nhờ các nỗ lực bảo tồn, số lượng đã tăng lên khoảng 3,500 cá thể, mặc dù vẫn bị đe dọa bởi nạn phá rừng và buôn bán động vật hoang dã."
+                info: "Voi Việt Nam, quần thể voi gắn bó với đời sống, lịch sử và văn hóa của cộng đồng dân tộc. Loài voi Việt Nam thuộc nhóm voi châu Á và từng phân bố rộng rãi ở Việt Nam. Hiện nay, voi hoang dã chỉ còn sống tại Tây Nguyên, đặc biệt là Đắk Lắk. Chúng có kích thước lớn, vóc dáng mạnh mẽ, và số lượng ngà voi dài. Tình trạng nguy cơ diệt chủng của voi Việt Nam đang tăng cao, và chỉ còn vài trăm con, đặc biệt là ở Tây Nguyên. Điều này đe dọa sự tồn tại của loài động vật quý hiếm này. Việc bảo tồn và giữ gìn môi trường sống của voi Việt Nam là hết sức cần thiết để tránh tình trạng tuyệt chủng. Những biện pháp bảo tồn và giáo dục cộng đồng về việc bảo vệ voi Việt Nam cũng cần được thực hiện ngay lập tức để bảo vệ di sản thiên nhiên độc đáo này."
             }
         ];
 
@@ -405,10 +409,10 @@
             shuffledAnimals = [...animals].sort(() => Math.random() - 0.5);
             currentQuestion = 0;
             score = 0;
-            
+
             // Update display
             updateQuestion();
-            
+
             // Show game screen
             startScreen.classList.add('hidden');
             gameScreen.classList.remove('hidden');
@@ -419,25 +423,25 @@
         function updateQuestion() {
             // Get current animal
             const animal = shuffledAnimals[currentQuestion];
-            
+
             // Update display
             animalName.textContent = animal.name;
             animalImage.src = animal.image;
             questionNumber.textContent = currentQuestion + 1;
             scoreElement.textContent = score;
             progressBar.style.width = `${(currentQuestion) * 10}%`;
-            
+
             // Hide feedback and info
             feedback.textContent = '';
             feedback.classList.remove('correct', 'incorrect');
             infoPanel.style.display = 'none';
-            
+
             // Update options
             const options = optionsContainer.querySelectorAll('.option');
             options.forEach((option, index) => {
                 const img = option.querySelector('img');
                 img.src = animal.ecosystems[index];
-                
+
                 // Add event listener
                 option.onclick = () => selectOption(index);
             });
@@ -447,13 +451,13 @@
         function selectOption(index) {
             const animal = shuffledAnimals[currentQuestion];
             const isCorrect = index === animal.correctEcosystem;
-            
+
             // Remove click events
             const options = optionsContainer.querySelectorAll('.option');
             options.forEach(option => {
                 option.onclick = null;
             });
-            
+
             // Update score and feedback
             if (isCorrect) {
                 score += 10;
@@ -464,7 +468,7 @@
                 feedback.textContent = 'Không đúng! Hệ sinh thái đúng là lựa chọn ' + (animal.correctEcosystem + 1);
                 feedback.classList.add('incorrect');
             }
-            
+
             // Show info
             animalInfo.textContent = animal.info;
             infoPanel.style.display = 'block';
@@ -473,7 +477,7 @@
         // Next question
         function nextQuestion() {
             currentQuestion++;
-            
+
             if (currentQuestion < 10) {
                 updateQuestion();
             } else {
@@ -490,4 +494,5 @@
         restartBtn.addEventListener('click', initGame);
     </script>
 </body>
+
 </html>
