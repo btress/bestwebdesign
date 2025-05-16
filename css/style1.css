@@ -284,7 +284,6 @@ header::before {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #FFFFFF;
 	text-align: center;
 }
 
@@ -434,7 +433,7 @@ nav a:hover {
 
 @media (max-width: 600px) {
 	.login-link {
-		transform: none; /* ← xoá hiệu ứng dịch chuyển */
+		transform: none;
 	}
 }
 
