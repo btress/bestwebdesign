@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,35 +14,41 @@
             background-color: #f7f7f7;
             color: #333;
         }
+
         header {
             background-color: #005030;
             color: white;
             padding: 1rem;
             text-align: center;
         }
+
         .logo {
             max-width: 100px;
             margin-bottom: 10px;
         }
+
         .hero-image {
             width: 100%;
             max-height: 790px;
             object-fit: cover;
             position: relative;
         }
+
         .hero-container {
             position: relative;
             overflow: hidden;
         }
+
         .hero-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
             height: 50%;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6));
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
             z-index: 1;
         }
+
         .hero-text {
             position: absolute;
             bottom: 30px;
@@ -49,36 +56,42 @@
             color: white;
             z-index: 2;
         }
+
         .hero-text h2 {
             border: none;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin: 0;
             padding: 0;
             font-size: 2.2rem;
         }
+
         .hero-text p {
             margin-top: 5px;
             font-size: 1.2rem;
             max-width: 600px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+
         .section {
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             padding: 20px;
         }
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
+
         h2 {
             font-size: 1.8rem;
             color: #005030;
@@ -86,16 +99,19 @@
             padding-bottom: 5px;
             margin-top: 30px;
         }
+
         h3 {
             font-size: 1.3rem;
             color: #007046;
         }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 20px 0;
         }
+
         .stat-box {
             background-color: #e8f5e9;
             border-left: 4px solid #005030;
@@ -105,11 +121,13 @@
             flex-direction: column;
             justify-content: center;
         }
+
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
             color: #d32f2f;
         }
+
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -118,6 +136,7 @@
             max-width: 100%;
             margin: 20px 0;
         }
+
         .video-placeholder {
             width: 100%;
             height: 100%;
@@ -131,12 +150,14 @@
             color: #555;
             font-weight: bold;
         }
+
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 20px 0;
         }
+
         .image-item {
             flex: 0 0 calc(33.33% - 10px);
             margin-bottom: 15px;
@@ -144,12 +165,14 @@
             overflow: hidden;
             border-radius: 4px;
         }
+
         .image-item img {
             width: 100%;
             height: 230px;
             object-fit: cover;
             transition: all 0.3s ease;
         }
+
         .image-item::after {
             content: '';
             position: absolute;
@@ -157,9 +180,10 @@
             left: 0;
             right: 0;
             height: 70%;
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
             pointer-events: none;
         }
+
         .image-caption {
             position: absolute;
             bottom: 0;
@@ -170,17 +194,20 @@
             font-size: 0.9rem;
             z-index: 1;
         }
+
         .solutions {
             background-color: #f1f8e9;
             padding: 20px;
             border-radius: 8px;
             margin: 20px 0;
         }
+
         .solution-item {
             margin-bottom: 20px;
             padding-left: 20px;
             border-left: 3px solid #7cb342;
         }
+
         .cta-button {
             display: inline-block;
             background-color: #d32f2f;
@@ -192,9 +219,11 @@
             margin-top: 10px;
             transition: background-color 0.3s;
         }
+
         .cta-button:hover {
             background-color: #b71c1c;
         }
+
         footer {
             background-color: #005030;
             color: white;
@@ -202,23 +231,25 @@
             padding: 20px;
             margin-top: 30px;
         }
+
         @media (max-width: 768px) {
             .image-item {
                 flex: 0 0 calc(50% - 10px);
             }
         }
-        
-        @media (max-width: 840px){
+
+        @media (max-width: 840px) {
             .stats {
                 grid-template-columns: 1fr;
             }
-            .image-gallery{
+
+            .image-gallery {
                 grid-template-columns: 1fr;
             }
         }
-        
     </style>
 </head>
+
 <body>
     <header>
         <h1>BẢO VỆ HỆ SINH THÁI ĐỘNG VẬT BIỂN</h1>
@@ -226,7 +257,8 @@
     </header>
 
     <div class="hero-container">
-        <img src="../image/sanho_bien.jpg" alt="Hệ sinh thái biển" class="hero-image">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Hệ sinh thái biển"
+            class="hero-image">
         <div class="hero-overlay"></div>
         <div class="hero-text">
             <h2>Bảo vệ tương lai của đại dương</h2>
@@ -237,8 +269,10 @@
     <div class="container">
         <div class="section">
             <h2>Hệ sinh thái biển - Trái tim của hành tinh xanh</h2>
-            <p>Hệ sinh thái động vật biển bao gồm hàng ngàn loài sinh vật phong phú như san hô, cá heo, rùa biển, cá mập, cá voi và nhiều loài không xương sống khác. Đây là môi trường sống quan trọng giúp duy trì cân bằng sinh thái, hấp thụ CO₂ và cung cấp nguồn thực phẩm, dược liệu cho con người.</p>
-            
+            <p>Hệ sinh thái động vật biển bao gồm hàng ngàn loài sinh vật phong phú như san hô, cá heo, rùa biển, cá
+                mập, cá voi và nhiều loài không xương sống khác. Đây là môi trường sống quan trọng giúp duy trì cân bằng
+                sinh thái, hấp thụ CO₂ và cung cấp nguồn thực phẩm, dược liệu cho con người.</p>
+
             <div class="stats">
                 <div class="stat-box">
                     <div class="stat-number">500+</div>
@@ -257,51 +291,62 @@
 
         <div class="section">
             <h2>Môi trường sinh sống dưới biển</h2>
-            <p>Các vùng biển như Trường Sa, Hoàng Sa, Côn Đảo và Vịnh Hạ Long là nơi cư trú của nhiều loài động vật quý hiếm. Những khu vực này có hệ san hô phong phú, thảm cỏ biển và vùng cửa sông ngập mặn—tất cả đều giữ vai trò then chốt trong duy trì sự sống dưới biển.</p>
-            
+            <p>Các vùng biển như Trường Sa, Hoàng Sa, Côn Đảo và Vịnh Hạ Long là nơi cư trú của nhiều loài động vật quý
+                hiếm. Những khu vực này có hệ san hô phong phú, thảm cỏ biển và vùng cửa sông ngập mặn—tất cả đều giữ
+                vai trò then chốt trong duy trì sự sống dưới biển.</p>
+
             <div class="image-gallery">
                 <div class="image-item">
-                    <img src="/image/sanho.jpg" alt="Rạn san hô">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Coral_Outcrop_Flynn_Reef.jpg/330px-Coral_Outcrop_Flynn_Reef.jpg" alt="Rạn san hô">
                     <div class="image-caption">Rạn san hô – nền móng của đa dạng sinh học biển</div>
                 </div>
                 <div class="image-item">
-                    <img src="/image/rua_bien.jpg" alt="Rùa biển">
+                    <img src="https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c8078560538e771fdad5af282ddf030fcb4f0173c7e001d77c3f774f2f1a0a5a157f10fe59da8f4b43da6422d8428b8b05c796384bc621cb4930f9d81bed152b429344/tumblr_nwnbrq6aiE1ueinygo1_1280.png" alt="Rùa biển">
                     <div class="image-caption">Rùa biển – biểu tượng của sinh vật biển đang bị đe dọa</div>
                 </div>
                 <div class="image-item">
-                    <img src="/image/ca_heo.jpg" alt="Cá heo bơi lội">
+                    <img src="https://image.tienphong.vn/w890/Uploaded/2025/itmtu/2021_04_23/ca-heo-634.jpeg" alt="Cá heo bơi lội">
                     <div class="image-caption">Cá heo di chuyển trong môi trường biển trong lành</div>
                 </div>
             </div>
-            
+
             <h3>Đặc điểm môi trường biển:</h3>
             <ul>
-                <li><strong>Rạn san hô:</strong> Là nơi trú ẩn và sinh sản của hàng trăm loài cá và sinh vật biển nhỏ.</li>
+                <li><strong>Rạn san hô:</strong> Là nơi trú ẩn và sinh sản của hàng trăm loài cá và sinh vật biển nhỏ.
+                </li>
                 <li><strong>Nhiệt độ:</strong> Ổn định từ 25-30°C giúp duy trì sự sống đa dạng.</li>
                 <li><strong>Độ mặn:</strong> Cân bằng tự nhiên, hỗ trợ sự sinh trưởng của nhiều loài thủy sinh.</li>
                 <li><strong>Dòng chảy:</strong> Mang theo dưỡng chất và phân phối sinh vật phù du khắp vùng biển.</li>
-                <li><strong>Thảm cỏ biển và rừng ngập mặn:</strong> Giữ đất, lọc nước và tạo nơi sống cho sinh vật non.</li>
+                <li><strong>Thảm cỏ biển và rừng ngập mặn:</strong> Giữ đất, lọc nước và tạo nơi sống cho sinh vật non.
+                </li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Thách thức và nguyên nhân</h2>
-            <p>Hệ sinh thái biển đang đối mặt với nhiều mối đe dọa như ô nhiễm nhựa, đánh bắt tận diệt, biến đổi khí hậu và sự phát triển không kiểm soát của du lịch ven biển.</p>
-            
+            <p>Hệ sinh thái biển đang đối mặt với nhiều mối đe dọa như ô nhiễm nhựa, đánh bắt tận diệt, biến đổi khí hậu
+                và sự phát triển không kiểm soát của du lịch ven biển.</p>
+
             <h3>Nguyên nhân suy thoái:</h3>
             <ol>
-                <li><strong>Ô nhiễm nhựa:</strong> Rác thải nhựa không phân hủy làm ảnh hưởng đến sức khỏe sinh vật biển.</li>
+                <li><strong>Ô nhiễm nhựa:</strong> Rác thải nhựa không phân hủy làm ảnh hưởng đến sức khỏe sinh vật
+                    biển.</li>
                 <li><strong>Đánh bắt quá mức:</strong> Làm mất cân bằng quần thể sinh vật trong chuỗi thức ăn.</li>
-                <li><strong>Phá hủy rạn san hô:</strong> Do nạo vét, lặn biển không kiểm soát hoặc biến đổi môi trường nước.</li>
-                <li><strong>Biến đổi khí hậu:</strong> Làm nóng nước biển, khiến san hô bị tẩy trắng và sinh vật không thể thích nghi.</li>
-                <li><strong>Du lịch không bền vững:</strong> Tác động mạnh đến môi trường và làm suy thoái cảnh quan ven biển.</li>
+                <li><strong>Phá hủy rạn san hô:</strong> Do nạo vét, lặn biển không kiểm soát hoặc biến đổi môi trường
+                    nước.</li>
+                <li><strong>Biến đổi khí hậu:</strong> Làm nóng nước biển, khiến san hô bị tẩy trắng và sinh vật không
+                    thể thích nghi.</li>
+                <li><strong>Du lịch không bền vững:</strong> Tác động mạnh đến môi trường và làm suy thoái cảnh quan ven
+                    biển.</li>
             </ol>
         </div>
 
         <div class="section">
             <h2>Giá trị và biểu tượng tự nhiên</h2>
-            <p>Hệ sinh thái biển không chỉ là nơi nuôi dưỡng sinh vật mà còn là nguồn cảm hứng cho nghệ thuật, văn hóa và du lịch. Hình ảnh các loài như rùa biển, cá heo, san hô thường xuất hiện trong chiến dịch bảo vệ môi trường, phim tài liệu và nghệ thuật đại dương.</p>
-            
+            <p>Hệ sinh thái biển không chỉ là nơi nuôi dưỡng sinh vật mà còn là nguồn cảm hứng cho nghệ thuật, văn hóa
+                và du lịch. Hình ảnh các loài như rùa biển, cá heo, san hô thường xuất hiện trong chiến dịch bảo vệ môi
+                trường, phim tài liệu và nghệ thuật đại dương.</p>
+
             <ul>
                 <li>Các khu bảo tồn biển như Côn Đảo, Phú Quốc trở thành điểm đến sinh thái nổi tiếng.</li>
                 <li>Hình ảnh cá voi và rùa biển được sử dụng trong giáo dục môi trường học đường.</li>
@@ -314,50 +359,61 @@
             <h2>Video: Hành trình bảo vệ đại dương</h2>
             <div class="video-container">
                 <div class="video-placeholder">
-                    <iframe width="100%" height="652" src="https://www.youtube.com/embed/mhJu4Wm5PRY" title="Video bảo vệ đại dương" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="100%" height="652"
+                        src="https://www.youtube.com/embed/qgcGYpJVrxQ?si=ORzkBMxxdKJQHsOs" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
             </div>
-            <p><em>Video mô tả cuộc sống của các sinh vật biển trong môi trường tự nhiên, đồng thời nhấn mạnh những tác động tiêu cực từ con người và tầm quan trọng của việc hành động vì đại dương.</em></p>
+            <p><em>Video mô tả cuộc sống của các sinh vật biển trong môi trường tự nhiên, đồng thời nhấn mạnh những tác
+                    động tiêu cực từ con người và tầm quan trọng của việc hành động vì đại dương.</em></p>
         </div>
 
         <div class="section">
             <h2>Giải pháp bảo vệ hệ sinh thái biển</h2>
-            <p>Để giữ gìn sự sống của động vật biển, cần sự hợp tác giữa chính phủ, tổ chức bảo tồn và toàn thể cộng đồng.</p>
-            
+            <p>Để giữ gìn sự sống của động vật biển, cần sự hợp tác giữa chính phủ, tổ chức bảo tồn và toàn thể cộng
+                đồng.</p>
+
             <div class="solutions">
                 <div class="solution-item">
                     <h3>1. Hạn chế rác thải nhựa</h3>
                     <p>Thực hiện phân loại rác, giảm sử dụng nhựa một lần và thu gom rác tại bờ biển.</p>
                 </div>
-                
+
                 <div class="solution-item">
                     <h3>2. Thiết lập khu bảo tồn biển</h3>
-                    <p>Bảo vệ những vùng biển trọng yếu, nghiêm cấm đánh bắt hoặc khai thác trái phép trong khu vực này.</p>
+                    <p>Bảo vệ những vùng biển trọng yếu, nghiêm cấm đánh bắt hoặc khai thác trái phép trong khu vực này.
+                    </p>
                 </div>
-                
+
                 <div class="solution-item">
                     <h3>3. Giáo dục cộng đồng</h3>
-                    <p>Tăng cường giáo dục về tác động của con người đến đại dương thông qua trường học, truyền thông và sự kiện công cộng.</p>
+                    <p>Tăng cường giáo dục về tác động của con người đến đại dương thông qua trường học, truyền thông và
+                        sự kiện công cộng.</p>
                 </div>
-                
+
                 <div class="solution-item">
                     <h3>4. Phát triển du lịch sinh thái biển</h3>
-                    <p>Khuyến khích mô hình du lịch thân thiện với môi trường, hỗ trợ cộng đồng địa phương và giữ gìn cảnh quan biển.</p>
+                    <p>Khuyến khích mô hình du lịch thân thiện với môi trường, hỗ trợ cộng đồng địa phương và giữ gìn
+                        cảnh quan biển.</p>
                 </div>
-                
+
                 <div class="solution-item">
                     <h3>5. Nghiên cứu và giám sát</h3>
-                    <p>Ứng dụng công nghệ để theo dõi sức khỏe hệ sinh thái biển, như máy bay không người lái, camera dưới nước và dữ liệu vệ tinh.</p>
+                    <p>Ứng dụng công nghệ để theo dõi sức khỏe hệ sinh thái biển, như máy bay không người lái, camera
+                        dưới nước và dữ liệu vệ tinh.</p>
                 </div>
             </div>
-            
+
             <h3>Các chương trình tiêu biểu:</h3>
             <ul>
                 <li><strong>Blue Ocean Vietnam:</strong> Nâng cao nhận thức và hành động vì biển sạch.</li>
-                <li><strong>Dự án bảo tồn rùa biển (IUCN):</strong> Theo dõi sinh sản và tái thả rùa biển tại Côn Đảo.</li>
+                <li><strong>Dự án bảo tồn rùa biển (IUCN):</strong> Theo dõi sinh sản và tái thả rùa biển tại Côn Đảo.
+                </li>
                 <li><strong>Chiến dịch "Giảm nhựa vì đại dương":</strong> Do WWF phối hợp với cộng đồng thực hiện.</li>
             </ul>
-            
+
             <a href="#" class="cta-button">THAM GIA CHIẾN DỊCH BẢO VỆ BIỂN</a>
         </div>
     </div>
@@ -367,4 +423,5 @@
         <p>Liên hệ: oceanprotectvn@gmail.com | Hotline: 0987.654.321</p>
     </footer>
 </body>
+
 </html>

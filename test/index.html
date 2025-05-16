@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NME - No Move Extinction</title>
-    <link rel="stylesheet" href="style1.css" />
+    <link rel="stylesheet" href="css/style1.css" />
 
     <!-- Thêm thư viện imagesLoaded -->
     <script src="https://cdn.jsdelivr.net/npm/imagesloaded@4.1.4/imagesloaded.pkgd.min.js"></script>
@@ -19,7 +19,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
         rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -32,6 +32,7 @@
                 </div>
                 <div class="burger" id="menuToggle"><span></span></div>
                 <nav>
+                     
                     <a href="#about">Giới Thiệu</a>
                     <a href="html/video.html">video</a>
                     <a href="html/thuvien.html">Từ Điển</a>
@@ -462,9 +463,9 @@
             <h2 class="section-title text-center mb-5 reveal">Tham Gia Cùng Chúng Tôi</h2>
             <div class="row">
                 <div class="col-lg-5 mb-4 mb-lg-0 reveal contact-section-left">
-                    <div class="card border-0 shadow-sm p-4">
+                    <div class="card border-0 shadow-sm p-4 card-info">
                         <h4>Thông Tin Liên Hệ</h4>
-                        <p class="text-muted mb-4">Hãy liên hệ để tham gia các hoạt động bảo tồn hoặc đóng góp ý kiến
+                        <p class=" mb-4">Hãy liên hệ để tham gia các hoạt động bảo tồn hoặc đóng góp ý kiến
                         </p>
 
                         <div class="mb-3 d-flex align-items-center">
@@ -503,32 +504,32 @@
                     </div>
                 </div>
                 <div class="col-lg-7 reveal contact-section-right">
-                    <div class="card border-0 shadow-sm p-4">
+                    <div class="card border-0 shadow-sm p-4 card-info">
                         <h4>Gửi Thông Tin</h4>
-                        <p class="text-muted mb-4">Điền thông tin để tham gia các hoạt động bảo tồn</p>
+                        <p class="mb-4">Điền thông tin để tham gia các hoạt động bảo tồn</p>
 
                         <form>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="name" class="form-label">Họ Tên</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Nhập họ tên của bạn">
+                                    <label for="name" class="form-label font500">Họ Tên</label>
+                                    <input type="text" id="name" placeholder="Nhập họ tên của bạn">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email"
+                                    <label for="email" class="form-label font500">Email</label>
+                                    <input type="email"  id="email"
                                         placeholder="Nhập email của bạn">
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label for="phone" class="form-label">Số Điện Thoại</label>
-                                <input type="text" class="form-control" id="phone"
+                                <label for="phone" class="font500">Số Điện Thoại</label>
+                                <input type="text"  id="phone"
                                     placeholder="Nhập số điện thoại của bạn">
                             </div>
 
                             <div class="mb-3">
-                                <label for="interest" class="form-label">Bạn Quan Tâm Đến</label>
-                                <select class="form-select" id="interest">
+                                <label for="interest" class="font500">Bạn Quan Tâm Đến</label>
+                                <select id="interest">
                                     <option selected>Chọn lĩnh vực bạn quan tâm</option>
                                     <option value="1">Tình nguyện viên</option>
                                     <option value="2">Quyên góp</option>
@@ -539,8 +540,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="message" class="form-label">Lời Nhắn</label>
-                                <textarea class="form-control" id="message" rows="4"
+                                <label for="message" class="font500">Lời Nhắn</label>
+                                <textarea  id="message" rows="4"
                                     placeholder="Nhập lời nhắn của bạn"></textarea>
                             </div>
 
@@ -551,7 +552,7 @@
                                 </label>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Gửi Thông Tin</button>
+                            <button type="submit" class="btn btn-primary transhalfsecond">Gửi Thông Tin</button>
                         </form>
                     </div>
                 </div>
@@ -569,7 +570,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="Nhập email của bạn">
+                        <input type="email" class="form-control" id = "emailNew"placeholder="Nhập email của bạn">
                         <button class="btn btn-warning" type="button">Đăng Ký</button>
                     </div>
                 </div>

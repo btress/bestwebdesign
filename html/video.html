@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -216,7 +217,8 @@
 
         .video-thumbnail {
             position: relative;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            padding-top: 56.25%;
+            /* 16:9 aspect ratio */
             cursor: pointer;
             overflow: hidden;
         }
@@ -302,8 +304,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .modal-content {
@@ -319,13 +326,19 @@
         }
 
         @keyframes scaleIn {
-            from { transform: scale(0.9); }
-            to { transform: scale(1); }
+            from {
+                transform: scale(0.9);
+            }
+
+            to {
+                transform: scale(1);
+            }
         }
 
         .video-player-container {
             position: relative;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            padding-top: 56.25%;
+            /* 16:9 aspect ratio */
             background-color: black;
         }
 
@@ -427,7 +440,8 @@
             transition: all 0.3s ease;
         }
 
-        .category-btn:hover, .category-btn.active {
+        .category-btn:hover,
+        .category-btn.active {
             background-color: var(--secondary-color);
             color: white;
         }
@@ -627,9 +641,17 @@
 
         /* Animations */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .pulse {
@@ -637,9 +659,17 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         .float {
@@ -650,23 +680,23 @@
             nav ul li {
                 margin: 5px 10px;
             }
-            
+
             .hero {
                 padding: 2rem 1rem;
             }
-            
+
             .hero h2 {
                 font-size: 2rem;
             }
-            
+
             .videos-container {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
-            
+
             .video-modal {
                 padding: 10px;
             }
-            
+
             .modal-content {
                 width: 95%;
                 margin: 30px auto;
@@ -730,6 +760,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="header-bg"></div>
@@ -759,14 +790,15 @@
             <div class="hero-bg"></div>
             <div class="hero-content">
                 <h2>Hãy Cùng Bảo Vệ Loài Vật</h2>
-                <p>Mỗi sinh vật đều có quyền được sống trong môi trường an toàn, khỏe mạnh và tự nhiên. Hãy tham gia cùng chúng tôi trong sứ mệnh bảo vệ các loài động vật khỏi sự tàn nhẫn, bóc lột và tuyệt chủng.</p>
+                <p>Mỗi sinh vật đều có quyền được sống trong môi trường an toàn, khỏe mạnh và tự nhiên. Hãy tham gia
+                    cùng chúng tôi trong sứ mệnh bảo vệ các loài động vật khỏi sự tàn nhẫn, bóc lột và tuyệt chủng.</p>
                 <a href="#videos" class="btn pulse">Xem Video Ngay</a>
             </div>
         </section>
 
         <section id="videos">
             <h2 class="section-title">Video Giáo Dục</h2>
-            
+
             <div class="categories">
                 <button class="category-btn active" data-category="all">Tất Cả</button>
                 <button class="category-btn" data-category="wildlife">Động Vật Hoang Dã</button>
@@ -779,16 +811,18 @@
 
                 <!-- Video 1 -->
                 <div class="video-card" data-category="wildlife">
-                    <div class="video-thumbnail" data-video-id="video1">
-                        <img src="/api/placeholder/640/360" alt="Bảo vệ loài hổ">
-                        <div class="play-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
-                            </svg>
+                    <a href="https://www.youtube.com/watch?v=eglUp0uyGPE" target="_blank">
+                        <div class="video-thumbnail" data-video-id="video1">
+                            <img src="https://i.ytimg.com/vi/TrzRZxavujQ/maxresdefault.jpg" alt="Bảo vệ loài hổ">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="video-info">
-                        <h3>Cứu Lấy Loài Hổ - Hành Động Ngay Bây Giờ</h3>
+                        <h3>Global Tiger Day 2023: TWNC's Fight to Preserve Tigers in Sumatra</h3>
                         <p>Tìm hiểu về tình trạng nguy cấp của loài hổ và những nỗ lực bảo tồn toàn cầu.</p>
                         <div class="video-tags">
                             <span class="video-tag">Động vật hoang dã</span>
@@ -798,68 +832,76 @@
                     </div>
                 </div>
 
-                <!-- Video 2 -->
-                <div class="video-card" data-category="pets">
-                    <div class="video-thumbnail" data-video-id="video2">
-                        <img src="/api/placeholder/640/360" alt="Chăm sóc thú cưng đúng cách">
-                        <div class="play-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
-                            </svg>
+                <!-- Video 1 -->
+                <div class="video-card" data-category="wildlife">
+                    <a href="https://www.youtube.com/watch?v=aTFyJy6OZAk" target="_blank">
+                        <div class="video-thumbnail" data-video-id="video1">
+                            <img src="https://thptductrong.edu.vn/home/uploads/news/2023_10/image-20231025165850-1.png" alt="Bảo vệ loài hổ">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <div class="video-info">
-                        <h3>Chăm Sóc Thú Cưng Đúng Cách</h3>
-                        <p>Hướng dẫn chăm sóc thú cưng nhân đạo và trách nhiệm cho mọi gia đình.</p>
+                        <h3>Vườn quốc gia Cát Tiên, nơi sinh sống cuối cùng của loài tê giác một sừng Việt Nam.</h3>
+                        <p>Tìm hiểu về loài tê giác.</p>
                         <div class="video-tags">
-                            <span class="video-tag">Thú cưng</span>
-                            <span class="video-tag">Chăm sóc</span>
-                            <span class="video-tag">Gia đình</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card" data-category="farm">
-                    <div class="video-thumbnail" data-video-id="video3">
-                        <img src="/api/placeholder/640/360" alt="Chăn nuôi nhân đạo">
-                        <div class="play-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Chăn Nuôi Nhân Đạo - Xu Hướng Tương Lai</h3>
-                        <p>Khám phá các phương pháp chăn nuôi nhân đạo và lợi ích cho môi trường.</p>
-                        <div class="video-tags">
-                            <span class="video-tag">Nông trại</span>
-                            <span class="video-tag">Chăn nuôi</span>
-                            <span class="video-tag">Bền vững</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card" data-category="marine">
-                    <div class="video-thumbnail" data-video-id="video4">
-                        <img src="/api/placeholder/640/360" alt="Bảo vệ đại dương">
-                        <div class="play-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Đại Dương Xanh - Bảo Vệ Sinh Vật Biển</h3>
-                        <p>Tác động của rác thải nhựa và biện pháp bảo vệ sinh vật biển trong thời đại hiện nay.</p>
-                        <div class="video-tags">
-                            <span class="video-tag">Đại dương</span>
-                            <span class="video-tag">Ô nhiễm</span>
+                            <span class="video-tag">Động vật hoang dã</span>
                             <span class="video-tag">Bảo tồn</span>
+                            <span class="video-tag">Loài nguy cấp</span>
                         </div>
                     </div>
                 </div>
+
+                <!-- Video 1 -->
+                <div class="video-card" data-category="wildlife">
+                    <a href="https://www.youtube.com/watch?app=desktop&v=h1tcXqA-xZo" target="_blank">
+                        <div class="video-thumbnail" data-video-id="video1">
+                            <img src="https://i.ytimg.com/vi/h1tcXqA-xZo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAN8oDFkp70L1Jrv45JAVivK5hu4g" alt="Bảo vệ loài hổ">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Bảo vệ động vật hoang dã, chuyển đổi mô hình cưỡi voi sang khám phá rừng sâu</h3>
+                        <p>Thay đổi hình thức du lịch cưỡi voi.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Động vật hoang dã</span>
+                            <span class="video-tag">Bảo tồn</span>
+                            <span class="video-tag">Loài nguy cấp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 1 -->
+                <div class="video-card" data-category="wildlife">
+                    <a href="https://www.youtube.com/watch?v=0XjQIszkuQU" target="_blank">
+                        <div class="video-thumbnail" data-video-id="video1">
+                            <img src="https://cdn-images.vtv.vn/zoom/640_400/2021/7/11/gacc82cc81u-trucc81c-panda-1626019640369912812286.jpg" alt="Bảo vệ loài hổ">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z" fill="#333"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Gấu trúc khổng lồ và những nỗ lực bảo tồn động vật hoang dã</h3>
+                        <p>Tìm hiểu về nỗ lực bảo tồn gấu trúc khổng lồ.</p>
+                        <div class="video-tags">
+                            <span class="video-tag">Động vật hoang dã</span>
+                            <span class="video-tag">Bảo tồn</span>
+                            <span class="video-tag">Loài nguy cấp</span>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </section>
     </main>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trò Chơi Bảo Vệ Hổ</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #b3e0ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .game-container {
+            width: 600px;
+            height: 300px;
+            position: relative;
+            border: 2px solid #333;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+        .score {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .start-btn {
+            padding: 12px 24px;
+            background-color: #ff9933;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        .start-btn:hover {
+            background-color: #ff8000;
+            transform: scale(1.05);
+        }
+        .tiger {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23FF9800' d='M50,10c22,0,40,18,40,40S72,90,50,90S10,72,10,50S28,10,50,10z'/><path fill='%23FFE0B2' d='M30,35c0,2.8,2.2,5,5,5s5-2.2,5-5s-2.2-5-5-5S30,32.2,30,35z M60,30c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5 S62.8,30,60,30z'/><path fill='white' d='M32.5,35c0,1.4,1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5s-1.1-2.5-2.5-2.5S32.5,33.6,32.5,35z M62.5,32.5 c-1.4,0-2.5,1.1-2.5,2.5s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S63.9,32.5,62.5,32.5z'/><circle fill='%23212121' cx='35' cy='35' r='1.5'/><circle fill='%23212121' cx='65' cy='35' r='1.5'/><path fill='%23212121' d='M50,45c-5.5,0-10,4.5-10,10h20C60,49.5,55.5,45,50,45z'/><path fill='%23FF5722' stroke='%23212121' stroke-width='0.5' d='M25,20l5,10 M30,20l-5,10 M70,20l5,10 M75,20l-5,10'/><path fill='%23212121' d='M40,25c-2.8,0-5-2.2-5-5h10C45,22.8,42.8,25,40,25z M60,25c-2.8,0-5-2.2-5-5h10C65,22.8,62.8,25,60,25z'/><path stroke='%23212121' stroke-width='0.5' fill='%23FF9800' d='M20,65c0,0,5,5,10,5s10-5,10-5 M60,65c0,0,5,5,10,5s10-5,10-5'/><path fill='%23FF5722' d='M85,55c-5,0-10-2-15-5s-10-5-15-5s-10,2-15,5s-10,5-15,5'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 2;
+            transition: all 0.1s ease-in-out;
+        }
+        .tiger:hover {
+            transform: scale(1.05);
+        }
+        .obstacle {
+            width: 30px;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 100'><path fill='%23795548' d='M10,100V40c0,0,0-10,15-10s15,10,15,10v60H10z'/><path fill='%238D6E63' d='M25,30c-15,0-15,10-15,10v5c0,0,0-10,15-10s15,10,15,10v-5C40,40,40,30,25,30z'/><path fill='%234CAF50' d='M5,40c0,0,5-15,20-15s20,15,20,15c0,0-5-5-20-5S5,40,5,40z'/><path fill='%2343A047' d='M5,35c0,0,5-15,20-15s20,15,20,15c0,0-5-5-20-5S5,35,5,35z'/><path fill='%233D8B3D' d='M5,30c0,0,5-15,20-15s20,15,20,15c0,0-5-5-20-5S5,30,5,30z'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        .ground {
+            width: 100%;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            background-color: #333;
+        }
+        .clouds {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .cloud {
+            width: 60px;
+            height: 30px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'><path fill='white' d='M10,25c0-8.3,6.7-15,15-15c4.1,0,7.8,1.7,10.5,4.4C38.1,7.6,45.1,3,53,3c9.4,0,17,7.6,17,17c0,0.4,0,0.9-0.1,1.3 C77,22.1,83,28.4,83,36c0,8.3-6.7,15-15,15H25C16.7,50,10,43.3,10,35C10,31.6,11.2,28.5,13.1,26.1C13,25.7,13,25.4,13,25z'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        .sun {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23FFEB3B' cx='50' cy='50' r='40'/><path fill='%23FFC107' d='M50,10c22.1,0,40,17.9,40,40S72.1,90,50,90'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ff9933;
+            text-align: center;
+        }
+        .restart-btn {
+            padding: 12px 24px;
+            background-color: #ff9933;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        .restart-btn:hover {
+            background-color: #ff8000;
+            transform: scale(1.05);
+        }
+        .jump {
+            animation: jump 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes jump {
+            0% {
+                bottom: 0;
+                transform: rotate(0deg) scale(1);
+            }
+            20% {
+                bottom: 80px;
+                transform: rotate(-5deg) scale(1.05);
+            }
+            40% {
+                bottom: 160px;
+                transform: rotate(0deg) scale(1.1);
+            }
+            60% {
+                bottom: 200px;
+                transform: rotate(5deg) scale(1.05);
+            }
+            80% {
+                bottom: 100px;
+                transform: rotate(0deg) scale(1.02);
+            }
+            100% {
+                bottom: 0;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        .title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ff5722;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .instructions {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="score">Điểm: <span id="score-value">0</span></div>
+    <div class="game-container">
+        <div class="sun"></div>
+        <div class="clouds">
+            <div class="cloud" style="left: 50px;"></div>
+            <div class="cloud" style="left: 200px; top: 30px;"></div>
+            <div class="cloud" style="left: 350px; top: 10px;"></div>
+            <div class="cloud" style="left: 500px; top: 25px;"></div>
+        </div>
+        <div class="tiger"></div>
+        <div class="ground"></div>
+        <div class="start-screen">
+            <div class="title">Trò Chơi Bảo Vệ Hổ</div>
+            <div class="instructions">
+                Nhấn phím cách hoặc nhấn vào màn hình để giúp hổ nhảy qua chướng ngại vật. <br>
+                Cứu lấy hổ và các loài động vật quý hiếm!
+            </div>
+            <button class="start-btn">Bắt Đầu!</button>
+        </div>
+        <div class="game-over">
+            <div class="message">Hổ cần bạn bảo vệ!</div>
+            <button class="restart-btn">Chơi Lại</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tiger = document.querySelector('.tiger');
+            const gameContainer = document.querySelector('.game-container');
+            const startScreen = document.querySelector('.start-screen');
+            const startBtn = document.querySelector('.start-btn');
+            const gameOver = document.querySelector('.game-over');
+            const restartBtn = document.querySelector('.restart-btn');
+            const scoreValue = document.getElementById('score-value');
+            
+            let isGameRunning = false;
+            let score = 0;
+            let obstacleInterval;
+            let scoreInterval;
+            
+            // Thêm hiệu ứng bóng đổ cho hổ
+            const tigerShadow = document.createElement('div');
+            tigerShadow.style.width = '40px';
+            tigerShadow.style.height = '10px';
+            tigerShadow.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+            tigerShadow.style.borderRadius = '50%';
+            tigerShadow.style.position = 'absolute';
+            tigerShadow.style.bottom = '0';
+            tigerShadow.style.left = '65px';
+            tigerShadow.style.zIndex = '1';
+            gameContainer.appendChild(tigerShadow);
+            
+            // Cập nhật vị trí bóng đổ khi hổ nhảy
+            let shadowInterval;
+            function updateShadow() {
+                const tigerRect = tiger.getBoundingClientRect();
+                const containerRect = gameContainer.getBoundingClientRect();
+                const tigerBottom = containerRect.bottom - tigerRect.bottom;
+                
+                if (tigerBottom > 5) {
+                    // Hổ đang nhảy
+                    const shadowScale = 1 - (tigerBottom / 300);
+                    const shadowWidth = Math.max(10, 40 * shadowScale);
+                    tigerShadow.style.width = shadowWidth + 'px';
+                    tigerShadow.style.opacity = Math.max(0.1, shadowScale).toString();
+                    tigerShadow.style.filter = `blur(${Math.min(5, tigerBottom/40)}px)`;
+                } else {
+                    // Hổ đang ở mặt đất
+                    tigerShadow.style.width = '40px';
+                    tigerShadow.style.opacity = '1';
+                    tigerShadow.style.filter = 'blur(1px)';
+                }
+            }
+            
+            function createObstacle() {
+                if (!isGameRunning) return;
+                
+                const obstacle = document.createElement('div');
+                obstacle.className = 'obstacle';
+                gameContainer.appendChild(obstacle);
+                
+                let obstaclePosition = 600;
+                
+                const moveObstacle = () => {
+                    if (obstaclePosition < -30) {
+                        obstacle.remove();
+                        clearInterval(obstacleTimer);
+                        return;
+                    }
+                    
+                    obstaclePosition -= 3;
+                    obstacle.style.right = `${600 - obstaclePosition}px`;
+                    
+                    // Kiểm tra va chạm
+                    const tigerRect = tiger.getBoundingClientRect();
+                    const obstacleRect = obstacle.getBoundingClientRect();
+                    
+                    if (
+                        tigerRect.right > obstacleRect.left &&
+                        tigerRect.left < obstacleRect.right &&
+                        tigerRect.bottom > obstacleRect.top &&
+                        tigerRect.top < obstacleRect.bottom
+                    ) {
+                        endGame();
+                    }
+                };
+                
+                const obstacleTimer = setInterval(moveObstacle, 20);
+            }
+            
+            function startGame() {
+                isGameRunning = true;
+                score = 0;
+                scoreValue.textContent = score;
+                startScreen.style.display = 'none';
+                gameOver.style.display = 'none';
+                
+                // Tạo chướng ngại vật
+                obstacleInterval = setInterval(createObstacle, 3000);
+                
+                // Tăng điểm
+                scoreInterval = setInterval(() => {
+                    score += 1;
+                    scoreValue.textContent = score;
+                }, 100);
+                
+                // Bắt đầu hiệu ứng bóng đổ
+                shadowInterval = setInterval(updateShadow, 50);
+            }
+            
+            function endGame() {
+                isGameRunning = false;
+                clearInterval(obstacleInterval);
+                clearInterval(scoreInterval);
+                clearInterval(shadowInterval);
+                
+                // Xóa tất cả chướng ngại vật
+                const obstacles = document.querySelectorAll('.obstacle');
+                obstacles.forEach(obstacle => obstacle.remove());
+                
+                gameOver.style.display = 'flex';
+            }
+            
+            // Hiệu ứng động vật khi nhảy
+            let jumpCount = 0;
+            function jump() {
+                if (!isGameRunning) return;
+                
+                if (!tiger.classList.contains('jump')) {
+                    tiger.classList.add('jump');
+                    
+                    // Thêm hiệu ứng đuôi vẫy khi nhảy
+                    jumpCount++;
+                    if (jumpCount % 3 === 0) {
+                        tiger.style.filter = "brightness(1.2) hue-rotate(10deg)";
+                        setTimeout(() => {
+                            tiger.style.filter = "brightness(1)";
+                        }, 600);
+                    }
+                    
+                    // Thêm hiệu ứng "vặn" người lúc nhảy
+                    const jumpTwist = [
+                        { transform: 'rotate(0deg)' },
+                        { transform: 'rotate(-5deg)', offset: 0.2 },
+                        { transform: 'rotate(5deg)', offset: 0.6 },
+                        { transform: 'rotate(0deg)' }
+                    ];
+                    
+                    // Thêm hiệu ứng dải màu khi nhảy
+                    const jumpStreak = document.createElement('div');
+                    jumpStreak.style.position = 'absolute';
+                    jumpStreak.style.width = '40px';
+                    jumpStreak.style.height = '80px';
+                    jumpStreak.style.left = '65px';
+                    jumpStreak.style.bottom = '60px';
+                    jumpStreak.style.background = 'linear-gradient(0deg, transparent, rgba(255, 165, 0, 0.3), transparent)';
+                    jumpStreak.style.borderRadius = '50%';
+                    jumpStreak.style.zIndex = '1';
+                    jumpStreak.style.opacity = '0';
+                    gameContainer.appendChild(jumpStreak);
+                    
+                    // Hiệu ứng mờ dần của dải màu
+                    setTimeout(() => {
+                        jumpStreak.style.opacity = '0.7';
+                        jumpStreak.style.transition = 'all 0.3s ease-in';
+                        jumpStreak.style.height = '120px';
+                        jumpStreak.style.bottom = '100px';
+                    }, 50);
+                    
+                    setTimeout(() => {
+                        jumpStreak.style.opacity = '0';
+                        jumpStreak.style.height = '200px';
+                        jumpStreak.style.bottom = '150px';
+                    }, 400);
+                    
+                    setTimeout(() => {
+                        jumpStreak.remove();
+                    }, 1200);
+                    
+                    setTimeout(() => {
+                        tiger.classList.remove('jump');
+                    }, 1200);
+                }
+            }
+            
+            // Điều khiển
+            document.addEventListener('keydown', (event) => {
+                if (event.code === 'Space') {
+                    event.preventDefault();
+                    if (!isGameRunning) {
+                        startGame();
+                    } else {
+                        jump();
+                    }
+                }
+            });
+            
+            gameContainer.addEventListener('click', () => {
+                if (!isGameRunning) {
+                    startGame();
+                } else {
+                    jump();
+                }
+            });
+            
+            startBtn.addEventListener('click', startGame);
+            restartBtn.addEventListener('click', startGame);
+        });
+    </script>
+</body>
+</html>

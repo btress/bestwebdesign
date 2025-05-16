@@ -279,8 +279,6 @@ header::before {
 }
 
 .logo {
-	display: inline-block;
-	transform: translateX(-200px);
 	width: 76px;
 	height: 90px;
 	position: absolute;
@@ -288,6 +286,15 @@ header::before {
 	left: 0;
 	background: #FFFFFF;
 	text-align: center;
+}
+
+
+
+@media (min-width: 1200px) {
+	.logo{
+		display: inline-block;
+		transform: translateX(-200px);
+	}
 }
 
 .logo img {
@@ -425,7 +432,14 @@ nav a:hover {
 	border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
+@media (max-width: 600px) {
+	.login-link {
+		transform: none; /* ← xoá hiệu ứng dịch chuyển */
+	}
+}
+
 @media screen and (min-width: 800px) {
+
 	nav {
 		display: block;
 	}

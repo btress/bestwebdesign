@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             background: linear-gradient(120deg, #c8e6c9, #a5d6a7);
             min-height: 100vh;
@@ -19,7 +20,7 @@
             position: relative;
             overflow-x: hidden;
         }
-        
+
         /* Động vật hoạt hình */
         .animal {
             position: absolute;
@@ -28,52 +29,83 @@
             animation-iteration-count: infinite;
             animation-timing-function: linear;
         }
-        
+
         .animal1 {
             top: 50px;
             left: 5%;
             animation-name: float1;
         }
-        
+
         .animal2 {
             bottom: 80px;
             right: 5%;
             animation-name: float2;
         }
-        
+
         .animal3 {
             top: 70%;
             left: 10%;
             animation-name: float3;
         }
-        
+
         .animal4 {
             top: 20%;
             right: 10%;
             animation-name: float4;
         }
-        
+
         @keyframes float1 {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
-        
+
         @keyframes float2 {
-            0%, 100% { transform: translateX(0) rotate(0deg); }
-            50% { transform: translateX(-20px) rotate(-5deg); }
+
+            0%,
+            100% {
+                transform: translateX(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateX(-20px) rotate(-5deg);
+            }
         }
-        
+
         @keyframes float3 {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(15px, -15px) rotate(3deg); }
-            75% { transform: translate(-15px, 15px) rotate(-3deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(15px, -15px) rotate(3deg);
+            }
+
+            75% {
+                transform: translate(-15px, 15px) rotate(-3deg);
+            }
         }
-        
+
         @keyframes float4 {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -81,7 +113,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         header {
             background-color: rgba(76, 175, 80, 0.85);
             padding: 20px;
@@ -92,7 +124,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         h1 {
             color: #fff;
             font-size: 36px;
@@ -100,14 +132,14 @@
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
-        
+
         .search-container {
             width: 80%;
             max-width: 600px;
             position: relative;
             margin-bottom: 10px;
         }
-        
+
         .search-container input {
             width: 100%;
             padding: 15px 20px;
@@ -118,7 +150,7 @@
             background-color: #fff;
             padding-right: 50px;
         }
-        
+
         .search-container button {
             position: absolute;
             right: 10px;
@@ -130,7 +162,7 @@
             font-size: 20px;
             color: #4CAF50;
         }
-        
+
         .categories {
             display: flex;
             justify-content: center;
@@ -138,7 +170,7 @@
             gap: 10px;
             margin-bottom: 20px;
         }
-        
+
         .category-btn {
             background-color: rgba(255, 255, 255, 0.7);
             border: 2px solid #4CAF50;
@@ -149,18 +181,19 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-        
-        .category-btn:hover, .category-btn.active {
+
+        .category-btn:hover,
+        .category-btn.active {
             background-color: #4CAF50;
             color: white;
         }
-        
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 25px;
         }
-        
+
         .game-card {
             background-color: rgba(255, 255, 255, 0.85);
             border-radius: 15px;
@@ -169,12 +202,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
-        
+
         .game-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
         }
-        
+
         .game-image {
             width: 100%;
             height: 160px;
@@ -182,17 +215,17 @@
             background-position: center;
             border-bottom: 3px solid #4CAF50;
         }
-        
+
         .game-info {
             padding: 15px;
         }
-        
+
         .game-info h3 {
             color: #2E7D32;
             margin-bottom: 8px;
             font-size: 18px;
         }
-        
+
         .game-info p {
             color: #555;
             font-size: 14px;
@@ -200,7 +233,7 @@
             height: 60px;
             overflow: hidden;
         }
-        
+
         .game-meta {
             display: flex;
             justify-content: space-between;
@@ -208,11 +241,11 @@
             color: #777;
             font-size: 12px;
         }
-        
+
         .rating {
             color: #FF9800;
         }
-        
+
         footer {
             text-align: center;
             padding: 20px;
@@ -220,7 +253,7 @@
             color: #2E7D32;
             font-size: 14px;
         }
-        
+
         /* Leaf animations */
         .leaf {
             position: absolute;
@@ -232,12 +265,13 @@
             z-index: 0;
             animation: falling linear infinite;
         }
-        
+
         @keyframes falling {
             0% {
                 transform: translateY(-5vh) rotate(0deg);
                 opacity: 0.7;
             }
+
             100% {
                 transform: translateY(105vh) rotate(720deg);
                 opacity: 0;
@@ -245,52 +279,53 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Động vật hoạt hình -->
     <div class="animal animal1">
         <svg width="80" height="80" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="#FFB74D"/>
-            <circle cx="35" cy="40" r="5" fill="#4E342E"/>
-            <circle cx="65" cy="40" r="5" fill="#4E342E"/>
-            <path d="M 40 65 Q 50 75 60 65" stroke="#4E342E" stroke-width="3" fill="none"/>
-            <path d="M 20 25 Q 25 10 40 15" stroke="#FFB74D" stroke-width="8" fill="none"/>
-            <path d="M 80 25 Q 75 10 60 15" stroke="#FFB74D" stroke-width="8" fill="none"/>
+            <circle cx="50" cy="50" r="45" fill="#FFB74D" />
+            <circle cx="35" cy="40" r="5" fill="#4E342E" />
+            <circle cx="65" cy="40" r="5" fill="#4E342E" />
+            <path d="M 40 65 Q 50 75 60 65" stroke="#4E342E" stroke-width="3" fill="none" />
+            <path d="M 20 25 Q 25 10 40 15" stroke="#FFB74D" stroke-width="8" fill="none" />
+            <path d="M 80 25 Q 75 10 60 15" stroke="#FFB74D" stroke-width="8" fill="none" />
         </svg>
     </div>
-    
+
     <div class="animal animal2">
         <svg width="90" height="60" viewBox="0 0 100 70">
-            <ellipse cx="50" cy="35" rx="45" ry="30" fill="#81C784"/>
-            <circle cx="35" cy="25" r="5" fill="#1B5E20"/>
-            <circle cx="65" cy="25" r="5" fill="#1B5E20"/>
-            <path d="M 40 45 Q 50 55 60 45" stroke="#1B5E20" stroke-width="3" fill="none"/>
-            <path d="M 5 10 L 20 30" stroke="#81C784" stroke-width="5" fill="none"/>
-            <path d="M 95 10 L 80 30" stroke="#81C784" stroke-width="5" fill="none"/>
+            <ellipse cx="50" cy="35" rx="45" ry="30" fill="#81C784" />
+            <circle cx="35" cy="25" r="5" fill="#1B5E20" />
+            <circle cx="65" cy="25" r="5" fill="#1B5E20" />
+            <path d="M 40 45 Q 50 55 60 45" stroke="#1B5E20" stroke-width="3" fill="none" />
+            <path d="M 5 10 L 20 30" stroke="#81C784" stroke-width="5" fill="none" />
+            <path d="M 95 10 L 80 30" stroke="#81C784" stroke-width="5" fill="none" />
         </svg>
     </div>
-    
+
     <div class="animal animal3">
         <svg width="70" height="80" viewBox="0 0 100 120">
-            <ellipse cx="50" cy="70" rx="40" ry="45" fill="#E57373"/>
-            <circle cx="40" cy="60" r="5" fill="#3E2723"/>
-            <circle cx="60" cy="60" r="5" fill="#3E2723"/>
-            <path d="M 40 85 Q 50 75 60 85" stroke="#3E2723" stroke-width="3" fill="none"/>
-            <path d="M 30 40 L 20 10" stroke="#E57373" stroke-width="7" fill="none"/>
-            <path d="M 70 40 L 80 10" stroke="#E57373" stroke-width="7" fill="none"/>
+            <ellipse cx="50" cy="70" rx="40" ry="45" fill="#E57373" />
+            <circle cx="40" cy="60" r="5" fill="#3E2723" />
+            <circle cx="60" cy="60" r="5" fill="#3E2723" />
+            <path d="M 40 85 Q 50 75 60 85" stroke="#3E2723" stroke-width="3" fill="none" />
+            <path d="M 30 40 L 20 10" stroke="#E57373" stroke-width="7" fill="none" />
+            <path d="M 70 40 L 80 10" stroke="#E57373" stroke-width="7" fill="none" />
         </svg>
     </div>
-    
+
     <div class="animal animal4">
         <svg width="100" height="70" viewBox="0 0 140 100">
-            <ellipse cx="70" cy="50" rx="60" ry="40" fill="#90CAF9"/>
-            <circle cx="55" cy="40" r="6" fill="#0D47A1"/>
-            <circle cx="85" cy="40" r="6" fill="#0D47A1"/>
-            <path d="M 60 65 Q 70 75 80 65" stroke="#0D47A1" stroke-width="3" fill="none"/>
-            <path d="M 10 30 Q 25 10 40 25" stroke="#90CAF9" stroke-width="8" fill="none"/>
-            <path d="M 130 30 Q 115 10 100 25" stroke="#90CAF9" stroke-width="8" fill="none"/>
+            <ellipse cx="70" cy="50" rx="60" ry="40" fill="#90CAF9" />
+            <circle cx="55" cy="40" r="6" fill="#0D47A1" />
+            <circle cx="85" cy="40" r="6" fill="#0D47A1" />
+            <path d="M 60 65 Q 70 75 80 65" stroke="#0D47A1" stroke-width="3" fill="none" />
+            <path d="M 10 30 Q 25 10 40 25" stroke="#90CAF9" stroke-width="8" fill="none" />
+            <path d="M 130 30 Q 115 10 100 25" stroke="#90CAF9" stroke-width="8" fill="none" />
         </svg>
     </div>
-    
+
     <!-- Falling leaves -->
     <div class="leaf" style="left:5%; animation-duration:15s;">
         <svg width="40" height="40" viewBox="0 0 50 50">
@@ -298,28 +333,28 @@
             <path d="M25,3 C25,25 25,25 25,47" stroke="#43A047" stroke-width="1" fill="none" />
         </svg>
     </div>
-    
+
     <div class="leaf" style="left:25%; animation-duration:17s; animation-delay:2s;">
         <svg width="30" height="30" viewBox="0 0 50 50">
             <path d="M25,3 C40,15 40,35 25,47 C10,35 10,15 25,3 Z" fill="#81C784" />
             <path d="M25,3 C25,25 25,25 25,47" stroke="#43A047" stroke-width="1" fill="none" />
         </svg>
     </div>
-    
+
     <div class="leaf" style="left:60%; animation-duration:14s; animation-delay:5s;">
         <svg width="35" height="35" viewBox="0 0 50 50">
             <path d="M25,3 C40,15 40,35 25,47 C10,35 10,15 25,3 Z" fill="#A5D6A7" />
             <path d="M25,3 C25,25 25,25 25,47" stroke="#43A047" stroke-width="1" fill="none" />
         </svg>
     </div>
-    
+
     <div class="leaf" style="left:85%; animation-duration:19s; animation-delay:1s;">
         <svg width="25" height="25" viewBox="0 0 50 50">
             <path d="M25,3 C40,15 40,35 25,47 C10,35 10,15 25,3 Z" fill="#C8E6C9" />
             <path d="M25,3 C25,25 25,25 25,47" stroke="#43A047" stroke-width="1" fill="none" />
         </svg>
     </div>
-    
+
     <div class="container">
         <header>
             <h1>Trò Chơi Bảo Vệ Động Vật</h1>
@@ -335,11 +370,11 @@
                 <button class="category-btn">Câu đố</button>
             </div>
         </header>
-        
+
         <div class="games-grid">
             <div class="game-card">
                 <a style="  text-decoration: none;" href="game.html">
-                    <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
+                    <div class="game-image" style="background-image: url('../../image/dovui.png')"></div>
                     <div class="game-info">
                         <h3>Chọn Hệ Sinh Thái</h3>
                         <p>Hãy xem thử độ hiểu biết của bạn về chúng tôi.</p>
@@ -350,10 +385,10 @@
                     </div>
                 </a>
             </div>
-            
+
             <div class="game-card">
                 <a style="  text-decoration: none;" href="game1.html">
-                    <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
+                    <div class="game-image" style="background-image: url('../../image/xephinh.png')"></div>
                     <div class="game-info">
                         <h3>Candy Animal</h3>
                         <p>Hãy ghép chúng lại với nhau nào.</p>
@@ -364,19 +399,21 @@
                     </div>
                 </a>
             </div>
-            
+
             <div class="game-card">
-                <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
-                <div class="game-info">
-                    <h3>Khám Phá Động Vật</h3>
-                    <p>Học về các loài động vật quý hiếm trên thế giới thông qua trò chơi câu đố thú vị.</p>
-                    <div class="game-meta">
-                        <span>5+ tuổi</span>
-                        <span class="rating">★★★★☆</span>
+                <a style="  text-decoration: none;" href="game2.html">
+                    <div class="game-image" style="background-image: url('../../image/honhay.png')"></div>
+                    <div class="game-info">
+                        <h3>Khám Phá Động Vật</h3>
+                        <p>Học về các loài động vật quý hiếm trên thế giới thông qua trò chơi câu đố thú vị.</p>
+                        <div class="game-meta">
+                            <span>5+ tuổi</span>
+                            <span class="rating">★★★★☆</span>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-            
+
             <div class="game-card">
                 <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
                 <div class="game-info">
@@ -388,7 +425,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="game-card">
                 <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
                 <div class="game-info">
@@ -400,7 +437,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="game-card">
                 <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
                 <div class="game-info">
@@ -412,7 +449,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="game-card">
                 <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
                 <div class="game-info">
@@ -424,7 +461,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="game-card">
                 <div class="game-image" style="background-image: url('/api/placeholder/250/160')"></div>
                 <div class="game-info">
@@ -437,24 +474,25 @@
                 </div>
             </div>
         </div>
-        
+
         <footer>
-            <p>© 2025 Trò Chơi Bảo Vệ Động Vật | Tất cả các trò chơi nhằm mục đích giáo dục và nâng cao nhận thức bảo vệ động vật</p>
+            <p>© 2025 Trò Chơi Bảo Vệ Động Vật | Tất cả các trò chơi nhằm mục đích giáo dục và nâng cao nhận thức bảo vệ
+                động vật</p>
         </footer>
     </div>
-    
+
     <script>
         // Thêm chức năng tìm kiếm
         const searchInput = document.querySelector('.search-container input');
         const gameCards = document.querySelectorAll('.game-card');
-        
-        searchInput.addEventListener('input', function() {
+
+        searchInput.addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase();
-            
+
             gameCards.forEach(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
                 const description = card.querySelector('p').textContent.toLowerCase();
-                
+
                 if (title.includes(searchTerm) || description.includes(searchTerm)) {
                     card.style.display = 'block';
                 } else {
@@ -462,18 +500,18 @@
                 }
             });
         });
-        
+
         // Chức năng lọc theo danh mục
         const categoryButtons = document.querySelectorAll('.category-btn');
-        
+
         categoryButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 // Xóa trạng thái kích hoạt từ tất cả các nút
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
-                
+
                 // Thêm trạng thái kích hoạt cho nút được nhấp
                 this.classList.add('active');
-                
+
                 // Logic lọc thực tế có thể được thêm vào đây
                 // Đơn giản là hiển thị tất cả các trò chơi khi nhấp vào "Tất cả"
                 if (this.textContent === 'Tất cả') {
@@ -484,14 +522,14 @@
                 // Trong một ứng dụng thực tế, bạn sẽ lọc dựa trên thuộc tính dữ liệu hoặc các tính năng khác
             });
         });
-        
+
         // Thêm các lá rơi liên tục
         function createLeaf() {
             const leaf = document.createElement('div');
             leaf.className = 'leaf';
             leaf.style.left = Math.random() * 100 + '%';
             leaf.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            
+
             const leafSvg = document.createElement('div');
             leafSvg.innerHTML = `
                 <svg width="${Math.random() * 20 + 20}" height="${Math.random() * 20 + 20}" viewBox="0 0 50 50">
@@ -499,19 +537,19 @@
                     <path d="M25,3 C25,25 25,25 25,47" stroke="#43A047" stroke-width="1" fill="none" />
                 </svg>
             `;
-            
+
             leaf.appendChild(leafSvg);
             document.body.appendChild(leaf);
-            
+
             // Xóa lá sau khi hoàn thành hoạt ảnh
             setTimeout(() => {
                 leaf.remove();
             }, parseFloat(leaf.style.animationDuration) * 1000);
         }
-        
+
         // Tạo lá rơi mỗi 3 giây
         setInterval(createLeaf, 3000);
-        
+
         // Thêm tính năng nhấp vào trò chơi
         // gameCards.forEach(card => {
         //     card.addEventListener('click', function() {
@@ -521,4 +559,5 @@
         // });
     </script>
 </body>
+
 </html>
