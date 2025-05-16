@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quyên Góp Bảo Vệ Động Vật Việt Nam</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f9e8;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #d73c14, #d73c14 40%, #ffff00 40%, #ffff00 60%, #d73c14 60%, #d73c14);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section h2 {
+            color: #2e7d32;
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .flex-item {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        form {
+            display: grid;
+            grid-gap: 15px;
+        }
+        
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2e7d32;
+        }
+        
+        .qr-code {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qr-code img {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .vietnam-overlay {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background-image: url('/api/placeholder/200/200');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            transform: rotate(-15deg);
+        }
+        
+        .animal-animation {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            padding: 1rem;
+            overflow: hidden;
+            position: relative;
+            height: 120px;
+        }
+        
+        .animal {
+            font-size: 3rem;
+            position: absolute;
+            animation-duration: 15s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        
+        #animal1 {
+            animation-name: moveRight;
+            top: 20px;
+        }
+        
+        #animal2 {
+            animation-name: moveLeft;
+            top: 60px;
+            animation-delay: 2s;
+        }
+        
+        #animal3 {
+            animation-name: moveRight;
+            top: 30px;
+            animation-delay: 4s;
+        }
+        
+        #animal4 {
+            animation-name: moveLeft;
+            top: 10px;
+            animation-delay: 6s;
+        }
+        
+        #animal5 {
+            animation-name: moveRight;
+            top: 80px;
+            animation-delay: 8s;
+        }
+        
+        @keyframes moveRight {
+            0% { left: -50px; transform: scale(1); }
+            50% { transform: scale(0.8); }
+            100% { left: 100%; transform: scale(1); }
+        }
+        
+        @keyframes moveLeft {
+            0% { right: -50px; transform: scale(1) scaleX(-1); }
+            50% { transform: scale(0.8) scaleX(-1); }
+            100% { right: 100%; transform: scale(1) scaleX(-1); }
+        }
+        
+        .donation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .donation-table th {
+            background-color: #4caf50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .donation-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .donation-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .donation-table tr:hover {
+            background-color: #e9f5e9;
+        }
+        
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .vietnam-images {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .vietnam-image {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vietnam-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .vietnam-image {
+                width: calc(50% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1>Quyên Góp Bảo Vệ Động Vật Việt Nam</h1>
+            <p>Chung tay giúp đỡ các loài động vật quý hiếm của Việt Nam</p>
+        </div>
+        <div class="vietnam-overlay"></div>
+    </header>
+    
+    <div class="animal-animation">
+        <div class="animal" id="animal1">🐘</div>
+        <div class="animal" id="animal2">🐯</div>
+        <div class="animal" id="animal3">🐢</div>
+        <div class="animal" id="animal4">🐒</div>
+        <div class="animal" id="animal5">🦏</div>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+            <h2>Về Chúng Tôi</h2>
+            <p>Quỹ Bảo Vệ Động Vật Việt Nam cam kết bảo vệ và phục hồi các loài động vật hoang dã đang bị đe dọa tại Việt Nam. Chúng tôi làm việc để duy trì môi trường sống tự nhiên và đấu tranh chống lại nạn buôn bán động vật hoang dã trái phép.</p>
+            
+            <div class="vietnam-images">
+                <div class="vietnam-image">
+                    <img src="/api/placeholder/150/100" alt="Vườn quốc gia Cúc Phương">
+                </div>
+                <div class="vietnam-image">
+                    <img src="/api/placeholder/150/100" alt="Voi rừng Việt Nam">
+                </div>
+                <div class="vietnam-image">
+                    <img src="/api/placeholder/150/100" alt="Voọc Cát Bà">
+                </div>
+                <div class="vietnam-image">
+                    <img src="/api/placeholder/150/100" alt="Sao La">
+                </div>
+            </div>
+            
+            <p>Đa dạng sinh học của Việt Nam là một trong những kho báu quý giá nhất của thế giới, với nhiều loài đặc hữu chỉ có thể tìm thấy ở đây. Tuy nhiên, nhiều loài đang đứng trước nguy cơ tuyệt chủng do săn bắn trái phép, mất môi trường sống và biến đổi khí hậu.</p>
+        </div>
+        
+        <div class="flex-container">
+            <div class="flex-item section">
+                <h2>Quyên Góp</h2>
+                <form id="donationForm">
+                    <div>
+                        <label for="fullName">Họ và tên:</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div>
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div>
+                        <label for="amount">Số tiền quyên góp (VNĐ):</label>
+                        <input type="number" id="amount" name="amount" min="10000" step="10000" required>
+                    </div>
+                    
+                    <div>
+                        <label for="project">Dự án bạn muốn hỗ trợ:</label>
+                        <select id="project" name="project">
+                            <option value="all">Tất cả các dự án</option>
+                            <option value="tiger">Bảo vệ hổ Đông Dương</option>
+                            <option value="elephant">Bảo tồn voi rừng</option>
+                            <option value="primate">Bảo vệ các loài linh trưởng</option>
+                            <option value="marine">Bảo vệ sinh vật biển</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message">Lời nhắn:</label>
+                        <textarea id="message" name="message" rows="3"></textarea>
+                    </div>
+                    
+                    <div>
+                        <label>
+                            <input type="checkbox" id="anonymous" name="anonymous">
+                            Quyên góp ẩn danh
+                        </label>
+                    </div>
+                    
+                    <button type="button" onclick="submitDonation()">Gửi Quyên Góp</button>
+                </form>
+            </div>
+            
+            <div class="flex-item section">
+                <h2>Quét Mã QR Để Quyên Góp</h2>
+                <div class="qr-code">
+                    <img src="/api/placeholder/200/200" alt="Mã QR Quyên góp">
+                    <p>Quét mã QR ở trên để chuyển khoản nhanh chóng</p>
+                    <p><strong>Số tài khoản:</strong> 19034857493</p>
+                    <p><strong>Ngân hàng:</strong> VietinBank</p>
+                    <p><strong>Chủ tài khoản:</strong> Quỹ Bảo Vệ Động Vật Việt Nam</p>
+                    <p><strong>Nội dung chuyển khoản:</strong> HoTen_SoDT_TenDuAn</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Danh Sách Người Quyên Góp</h2>
+            <table class="donation-table" id="donationTable">
+                <thead>
+                    <tr>
+                        <th>Họ và tên</th>
+                        <th>Ngày quyên góp</th>
+                        <th>Số tiền (VNĐ)</th>
+                        <th>Dự án hỗ trợ</th>
+                        <th>Lời nhắn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nguyễn Văn A</td>
+                        <td>12/05/2025</td>
+                        <td>500,000</td>
+                        <td>Bảo vệ hổ Đông Dương</td>
+                        <td>Chúc quỹ luôn thành công!</td>
+                    </tr>
+                    <tr>
+                        <td>Trần Thị B</td>
+                        <td>10/05/2025</td>
+                        <td>1,000,000</td>
+                        <td>Bảo tồn voi rừng</td>
+                        <td>Cảm ơn vì những việc làm ý nghĩa</td>
+                    </tr>
+                    <tr>
+                        <td>Lê Văn C</td>
+                        <td>08/05/2025</td>
+                        <td>200,000</td>
+                        <td>Tất cả các dự án</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Phạm Thị D</td>
+                        <td>05/05/2025</td>
+                        <td>2,000,000</td>
+                        <td>Bảo vệ sinh vật biển</td>
+                        <td>Bảo vệ đại dương của chúng ta</td>
+                    </tr>
+                    <tr>
+                        <td>Hoàng Văn E</td>
+                        <td>01/05/2025</td>
+                        <td>350,000</td>
+                        <td>Bảo vệ các loài linh trưởng</td>
+                        <td>Hãy cứu lấy những loài linh trưởng quý hiếm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Quỹ Bảo Vệ Động Vật Việt Nam. Tất cả các quyền được bảo lưu.</p>
+        <p>Địa chỉ: 123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p>
+        <p>Email: info@baovedongvat.vn | Điện thoại: 028.1234.5678</p>
+    </footer>
+    
+    <script>
+        function submitDonation() {
+            // Lấy giá trị từ form
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const amount = document.getElementById('amount').value;
+            const project = document.getElementById('project');
+            const projectName = project.options[project.selectedIndex].text;
+            const message = document.getElementById('message').value;
+            const anonymous = document.getElementById('anonymous').checked;
+            
+            // Kiểm tra dữ liệu hợp lệ
+            if (!fullName || !email || !amount) {
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+                return;
+            }
+            
+            // Định dạng số tiền
+            const formattedAmount = new Intl.NumberFormat('vi-VN').format(amount);
+            
+            // Tạo ngày hiện tại
+            const today = new Date();
+            const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
+            
+            // Thêm dòng mới vào bảng
+            const table = document.getElementById('donationTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow(0);
+            
+            // Chèn các ô
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+            const cell5 = newRow.insertCell(4);
+            
+            // Thêm dữ liệu vào các ô
+            cell1.innerHTML = anonymous ? "Người quyên góp ẩn danh" : fullName;
+            cell2.innerHTML = formattedDate;
+            cell3.innerHTML = formattedAmount;
+            cell4.innerHTML = projectName;
+            cell5.innerHTML = message;
+            
+            // Hiệu ứng highlight dòng mới
+            newRow.style.backgroundColor = '#e8f5e9';
+            setTimeout(() => {
+                newRow.style.transition = 'background-color 1s ease';
+                newRow.style.backgroundColor = '';
+            }, 100);
+            
+            // Reset form
+            document.getElementById('donationForm').reset();
+            
+            // Thông báo thành công
+            alert('Cảm ơn bạn đã quyên góp! Thông tin của bạn đã được ghi nhận.');
+        }
+    </script>
+</body>
+</html>

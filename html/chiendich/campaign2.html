@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảo vệ Voọc chà vá chân nâu - Biểu tượng của Đà Nẵng</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        header {
+            background-color: #005030;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .logo {
+            max-width: 100px;
+            margin-bottom: 10px;
+        }
+        .hero-image {
+            width: 100%;
+            max-height: 790px;
+            object-fit: cover;
+            position: relative;
+        }
+        .hero-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+        .hero-text {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            z-index: 2;
+        }
+        .hero-text h2 {
+            border: none;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+            padding: 0;
+            font-size: 2.2rem;
+        }
+        .hero-text p {
+            margin-top: 5px;
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #005030;
+            border-bottom: 2px solid #005030;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            color: #007046;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .stat-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #005030;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 20px 0;
+        }
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e0e0;
+            color: #555;
+            font-weight: bold;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .image-item {
+            flex: 0 0 calc(33.33% - 10px);
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .image-item img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .image-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+            pointer-events: none;
+        }
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: white;
+            padding: 10px;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+        .solutions {
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .solution-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #7cb342;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #d32f2f;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #b71c1c;
+        }
+        footer {
+            background-color: #005030;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .image-item {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+        
+        @media (max-width: 840px){
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            .image-gallery{
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
